@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * Created by Lfurrer on 28/04/2016.
  */
 @Controller
-@RequestMapping("/piovra")
+@RequestMapping("/")
 public class PiovraController {
 
     private static final Logger LOG = LogManager.getLogger(PiovraController.class);

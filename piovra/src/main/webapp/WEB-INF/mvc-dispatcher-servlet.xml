@@ -13,6 +13,8 @@
 
     <mvc:annotation-driven/>
 
+    <mvc:resources location="/resources/" mapping="/resources/**" />
+
     <context:component-scan base-package="it.lf.piovra.controllers"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
