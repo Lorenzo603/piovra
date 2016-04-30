@@ -1,3 +1,15 @@
-.green {
+.hidden {
+    display: none;
+}
+
+button .add-factor-button {
     color: green;
+}
+
+button .save-factor-button {
+    color: green;
+}
+
+button .clear-factor-button {
+    color: red;
 }
