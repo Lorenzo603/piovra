@@ -2,6 +2,10 @@
     display: none;
 }
 
+.clear {
+	clear: both;
+}
+
 button .add-factor-button {
     color: green;
 }

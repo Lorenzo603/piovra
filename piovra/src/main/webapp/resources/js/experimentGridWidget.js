@@ -7,7 +7,7 @@ var ExperimentGridWidget = {
     bindUIActions: function() {
         $('.add-factor-button').click(
             function() {
-                $(this.parentElement.parentElement).find('.hidden').removeClass('hidden');
+                $('#factor-list').find('li div.hidden').removeClass('hidden');
             }
         );
         $('.save-factor-button').click(

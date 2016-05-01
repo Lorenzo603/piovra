@@ -1,9 +1,11 @@
+<%@ taglib prefix="experimentGrid" tagdir="/WEB-INF/tags/experimentGrid" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Piovra</title>
-    
+
     <link rel="stylesheet" href="resources/css/lib/bootstrap.min.css" />
     <link rel="stylesheet" href="resources/css/main.css" />
     <script type="text/javascript" src="resources/js/lib/jquery-1.12.3.min.js"></script>
@@ -21,29 +23,16 @@
 		</div>
 
         <div class="content">
-
             <ul id="factor-list" class="list-group">
                 <li class="list-group-item">
-
-                    <div class="hidden">
-                        Factor name:
-                        <input name="factorName" type="text" />
-                        <button>
-                            <span class="glyphicon glyphicon-ok save-factor-button" aria-hidden="true"></span>
-                        </button>
-                        <button>
-                            <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
-                        </button>
-                    </div>
-
-                    <div>
-                        <button class="btn btn-default add-factor-button" type="button">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
-                        </button>
-                    </div>
-
+                    <experimentGrid:factorItem />
                 </li>
             </ul>
+            <div>
+                <button class="btn btn-default add-factor-button" type="button">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
+                </button>
+            </div>
 
             <br class="clear">
         </div>
