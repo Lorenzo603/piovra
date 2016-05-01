@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="resources/css/main.css" />
     <script type="text/javascript" src="resources/js/lib/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/experimentGridWidget.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -18,26 +19,27 @@
 			<h1>Piovra</h1>
 			<br class="clear">
 		</div>
-        
+
         <div class="content">
-            
+
             <ul id="factor-list" class="list-group">
                 <li class="list-group-item">
+
+                    <div class="hidden">
+                        Factor name:
+                        <input name="factorName" type="text" />
+                        <button>
+                            <span class="glyphicon glyphicon-ok save-factor-button" aria-hidden="true"></span>
+                        </button>
+                        <button>
+                            <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
                     <div>
                         <button class="btn btn-default add-factor-button" type="button">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
                         </button>
-                    </div>
-                    <div class="hidden">
-
-                            <input name="factorName" type="text" />
-                            <button>
-                                <span class="glyphicon glyphicon-ok save-factor-button" aria-hidden="true"></span>
-                            </button>
-                            <button>
-                                <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
-                            </button>
-
                     </div>
 
                 </li>
@@ -56,36 +58,9 @@
 
         $(document).ready(
             function() {
-                $('.add-factor-button').click(
-                    function() {
-                        $(this.parentElement.parentElement).find('.hidden').removeClass('hidden');
-                    }
-                );
-                $('.save-factor-button').click(
-                    function(e) {
-                        e.preventDefault();
-                        $.ajax(
-                        {
-                            type: "POST",
-                            url: "save-factor",
-                            data: {factorName: $('input[name="factorName"]').val()},
-                            success: function(data) {
-                                console.log("save-factor call finished with succecss");
-                                $('#debug').html("factor name is " + data.name);
-                            },
-                            error: function() {
-                                console.log("error in save-factor call");
-                            }
-                        }
-                        );
-                        return false;
-                    }
-                );
-
+                ExperimentGridWidget.init();
             }
         );
-
-
 
     </script>
 </body>
