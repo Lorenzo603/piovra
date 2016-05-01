@@ -12,7 +12,10 @@
 
     <!-- Facades -->
     <alias name="factorFacadeImpl" alias="factorFacade"/>
-    <bean id="factorFacadeImpl" class="it.lf.piovra.facades.impl.FactorFacadeImpl" />
+    <bean id="factorFacadeImpl" class="it.lf.piovra.facades.impl.FactorFacadeImpl" >
+        <property name="factorService" ref="factorService" />
+        <property name="factorConverter" ref="factorConverter" />
+    </bean>
 
     <alias name="suiteFacadeImpl" alias="suiteFacadeImpl"/>
     <bean id="suiteFacadeImpl" class="it.lf.piovra.facades.impl.SuiteFacadeImpl" />

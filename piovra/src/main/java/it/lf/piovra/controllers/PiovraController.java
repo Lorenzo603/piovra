@@ -45,14 +45,14 @@ public class PiovraController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/add-factor", method = RequestMethod.POST)
+    @RequestMapping(value = "/save-factor", method = RequestMethod.POST, produces = "application/json")
     public String addFactor(@RequestParam String factorName) {
         FactorData factorData = factorFacade.createFactor(factorName);
         return gsonUtils.toJson(factorData);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/add-level", method = RequestMethod.POST)
+    @RequestMapping(value = "/save-level", method = RequestMethod.POST)
     public String addLevel(@RequestParam String levelName) {
 
         return "";

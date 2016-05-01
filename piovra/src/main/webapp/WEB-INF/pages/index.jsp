@@ -29,48 +29,63 @@
                         </button>
                     </div>
                     <div class="hidden">
-                        <form method="post" action="/addFactor">
+
                             <input name="factorName" type="text" />
                             <button>
                                 <span class="glyphicon glyphicon-ok save-factor-button" aria-hidden="true"></span>
                             </button>
                             <button>
-                                <span class="glyphicon glyphicon-remove clear-factor-button" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
                             </button>
-                        </form>
+
                     </div>
 
                 </li>
             </ul>
-
 
             <br class="clear">
         </div>
 
         <div class="footer">Lorenzo603 &copy;2016</div>
         <div id="debug">
-
+            DEBUG text
 		</div>
     </div>
 
     <script type="text/javascript">
-        $('.add-factor-button').click(
-        function() {
-            $(this.parentElement.parentElement).find('.hidden').removeClass('hidden');
-        }
-        );
-        $('.save-factor-button').click(
-        function() {
-            $.ajax(
-            {
-                type: "POST",
-                url: "/save-factor",
-                data: null,
-                success: function(){}
+
+        $(document).ready(
+            function() {
+                $('.add-factor-button').click(
+                    function() {
+                        $(this.parentElement.parentElement).find('.hidden').removeClass('hidden');
+                    }
+                );
+                $('.save-factor-button').click(
+                    function(e) {
+                        e.preventDefault();
+                        $.ajax(
+                        {
+                            type: "POST",
+                            url: "save-factor",
+                            data: {factorName: $('input[name="factorName"]').val()},
+                            success: function(data) {
+                                console.log("save-factor call finished with succecss");
+                                $('#debug').html("factor name is " + data.name);
+                            },
+                            error: function() {
+                                console.log("error in save-factor call");
+                            }
+                        }
+                        );
+                        return false;
+                    }
+                );
+
             }
-            );
-        }
         );
+
+
 
     </script>
 </body>

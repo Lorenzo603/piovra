@@ -5,6 +5,7 @@ import it.lf.piovra.models.Factor;
 import it.lf.piovra.services.FactorConverter;
 import it.lf.piovra.services.FactorService;
 import it.lf.piovra.views.FactorData;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.annotation.Resource;
 
@@ -22,5 +23,15 @@ public class FactorFacadeImpl implements FactorFacade {
     public FactorData createFactor(String name) {
         Factor factor = factorService.createFactor(name);
         return factorConverter.convert(factor);
+    }
+
+    @Required
+    public void setFactorService(FactorService factorService) {
+        this.factorService = factorService;
+    }
+
+    @Required
+    public void setFactorConverter(FactorConverter factorConverter) {
+        this.factorConverter = factorConverter;
     }
 }
