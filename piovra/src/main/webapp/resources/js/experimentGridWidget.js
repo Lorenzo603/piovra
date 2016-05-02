@@ -2,6 +2,10 @@ var ExperimentGridWidget = {
     
     init: function() {
         this.bindUIActions();
+        $.get("resources/templates/factorTemplate.html", function(template) {
+            $('#factor-list').append(Mustache.render(template));
+        });
+
     },
     
     bindUIActions: function() {

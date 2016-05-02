@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="resources/css/main.css" />
     <script type="text/javascript" src="resources/js/lib/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/lib/mustache.min.js"></script>
     <script type="text/javascript" src="resources/js/experimentGridWidget.js"></script>
 </head>
 <body>
@@ -24,9 +25,7 @@
 
         <div class="content">
             <ul id="factor-list" class="list-group">
-                <li class="list-group-item">
-                    <experimentGrid:factorItem />
-                </li>
+
             </ul>
             <div>
                 <button class="btn btn-default add-factor-button" type="button">
