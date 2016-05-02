@@ -1,13 +1,17 @@
+var factor-index-prefix = "li-factor-";
+var level-index-prefix = "div-level-";
+
 var ExperimentGridWidget = {
-    
+
     init: function() {
         this.bindUIActions();
-        this.addFactorItem();
+        this.addFactorItem(0);
     },
 
     bindUIActions: function() {
         $('.add-factor-button').click(
             function() {
+                this.
                 $('#factor-list li div.factor-item').last().removeClass('hidden');
                 ExperimentGridWidget.addFactorItem();
             }
@@ -34,15 +38,19 @@ var ExperimentGridWidget = {
         );
         $('.add-level-button').click(
             function() {
-                $('#factor-list').find('li div.level-item').removeClass('hidden');
+                $('#factor-list li div.level-item').last().removeClass('hidden');
                 ExperimentGridWidget.addLevelItem();
             }
         );
     },
 
-    addFactorItem: function() {
-        $.get("resources/templates/factorTemplate.html", function(template) {
-            $('#factor-list').append(Mustache.render(template));
+    addFactorItem: function(factorIndex) {
+        var levelTemplate = "";
+        $.get("resources/templates/levelTemplate.html", function(partialTemplate) {
+            levelTemplate = partialTemplate;
+            $.get("resources/templates/factorTemplate.html", function(template) {
+                $('#factor-list').append(Mustache.render(template,{factorIndex: factorIndex}, {levelTemplate: Mustache.render(levelTemplate,{levelIndex: 0})}));
+            });
         });
     },
 
