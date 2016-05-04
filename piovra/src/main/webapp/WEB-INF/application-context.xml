@@ -11,6 +11,12 @@
     <mvc:annotation-driven />
 
     <!-- Facades -->
+    <alias name="experimentFacadeImpl" alias="experimentFacade"/>
+    <bean id="experimentFacadeImpl" class="it.lf.piovra.facades.impl.ExperimentFacadeImpl" >
+        <property name="experimentService" ref="experimentService" />
+        <property name="experimentConverter" ref="experimentConverter" />
+    </bean>
+
     <alias name="factorFacadeImpl" alias="factorFacade"/>
     <bean id="factorFacadeImpl" class="it.lf.piovra.facades.impl.FactorFacadeImpl" >
         <property name="factorService" ref="factorService" />
@@ -23,10 +29,20 @@
     <bean id="gsonUtils" class="com.google.gson.Gson"/>
 
     <!-- Services -->
+    <alias name="experimentServiceImpl" alias="experimentService"/>
+    <bean id="experimentServiceImpl" class="it.lf.piovra.services.impl.ExperimentServiceImpl" />
+
     <alias name="factorServiceImpl" alias="factorService"/>
     <bean id="factorServiceImpl" class="it.lf.piovra.services.impl.FactorServiceImpl" />
 
+    <alias name="experimentConverterImpl" alias="experimentConverter"/>
+    <bean id="experimentConverterImpl" class="it.lf.piovra.services.impl.ExperimentConverterImpl" >
+        <property name="factorConverter" ref="factorConverter" />
+    </bean>
+
     <alias name="factorConverterImpl" alias="factorConverter"/>
     <bean id="factorConverterImpl" class="it.lf.piovra.services.impl.FactorConverterImpl" />
+
+
 
 </beans>

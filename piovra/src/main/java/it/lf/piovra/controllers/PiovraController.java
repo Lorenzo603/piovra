@@ -1,10 +1,12 @@
 package it.lf.piovra.controllers;
 
 import com.google.gson.Gson;
+import it.lf.piovra.facades.ExperimentFacade;
 import it.lf.piovra.facades.FactorFacade;
 import it.lf.piovra.facades.SuiteFacade;
 import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.Factor;
+import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.FactorData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +33,9 @@ public class PiovraController {
     private SuiteFacade suiteFacade;
 
     @Resource
+    private ExperimentFacade experimentFacade;
+
+    @Resource
     private FactorFacade factorFacade;
 
     @Resource
@@ -42,6 +47,13 @@ public class PiovraController {
         LOG.info(suiteFacade.getString());
 
         return HOMEPAGE_VIEW;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getExperiment", method = RequestMethod.GET, produces = "application/json")
+    public String getExperiment() {
+        ExperimentData experimentData = experimentFacade.getExperiment();
+        return gsonUtils.toJson(experimentData);
     }
 
     @ResponseBody

@@ -1,11 +1,8 @@
-var factor-index-prefix = "li-factor-";
-var level-index-prefix = "div-level-";
-
 var ExperimentGridWidget = {
 
     init: function() {
         this.bindUIActions();
-        this.addFactorItem(0);
+        this.updateView();
     },
 
     bindUIActions: function() {
@@ -42,6 +39,19 @@ var ExperimentGridWidget = {
                 ExperimentGridWidget.addLevelItem();
             }
         );
+    },
+
+    updateView: function() {
+        $.ajax(
+            {
+            type: "GET",
+            url: "getExperiment",
+            success: function(data) {
+
+            }
+        }
+        );
+        this.addFactorItem(0);
     },
 
     addFactorItem: function(factorIndex) {

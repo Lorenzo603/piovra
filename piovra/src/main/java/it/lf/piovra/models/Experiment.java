@@ -10,6 +10,10 @@ public class Experiment {
 
     private List<Factor> factors = new ArrayList<>();
 
+    public List<Factor> getFactors() {
+        return factors;
+    }
+
     public void addFactor(Factor factor) {
         factors.add(factor);
     }

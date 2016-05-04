@@ -27,12 +27,6 @@
             <ul id="factor-list" class="list-group">
 
             </ul>
-            <div>
-                <button class="btn btn-default add-factor-button" type="button">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
-                </button>
-            </div>
-
             <br class="clear">
         </div>
 

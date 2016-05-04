@@ -1,5 +1,5 @@
 <li class="list-group-item li-factor-{{factorIndex}}">
-    <div class="factor-item hidden">
+    <div class="factor-item">
         Factor name:
         <input name="factorName" type="text" />
         <button>
@@ -9,12 +9,12 @@
             <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
         </button>
 
+        <button class="btn btn-default add-factor-button" type="button">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
+        </button>
+
+
         {{> levelTemplate}}
 
-        <div>
-            <button class="btn btn-default add-level-button" type="button">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new Level</span>
-            </button>
-        </div>
     </div>
 </li>
