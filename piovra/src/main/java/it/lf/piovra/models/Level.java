@@ -7,6 +7,7 @@ public class Level {
 
     private String id;
     private String name;
+    private Factor factor;
 
     public String getId() {
         return id;
@@ -24,4 +25,11 @@ public class Level {
         this.name = name;
     }
 
+    public Factor getFactor() {
+        return factor;
+    }
+
+    public void setFactor(Factor factor) {
+        this.factor = factor;
+    }
 }

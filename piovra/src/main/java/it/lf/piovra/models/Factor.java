@@ -21,6 +21,9 @@ public class Factor {
     }
 
     public void clearLevels() {
+        for (Level level : levels) {
+            level.setFactor(null);
+        }
         levels.clear();
     }
 

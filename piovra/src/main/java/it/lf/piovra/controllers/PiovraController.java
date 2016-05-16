@@ -76,6 +76,13 @@ public class PiovraController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/remove-factor", method = RequestMethod.POST)
+    public String removeFactor(@RequestParam String id) {
+        factorFacade.removeFactor(id);
+        return "OK";
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/add-level", method = RequestMethod.POST)
     public String addLevel(@RequestParam String levelName, @RequestParam String factorId) {
         LevelData levelData = levelFacade.addLevel(levelName, factorId);
@@ -87,6 +94,13 @@ public class PiovraController {
     public String editLevel(@RequestParam String id, @RequestParam String levelName) {
         LevelData levelData = levelFacade.editLevel(id, levelName);
         return gsonUtils.toJson(levelData);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/remove-level", method = RequestMethod.POST)
+    public String removeLevel(@RequestParam String id) {
+        levelFacade.removeLevel(id);
+        return "OK";
     }
 
 }

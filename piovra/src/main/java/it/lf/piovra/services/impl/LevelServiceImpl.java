@@ -38,11 +38,19 @@ public class LevelServiceImpl implements LevelService {
     }
 
     @Override
-    public Level createLevel(String name) {
+    public Level createLevel(Factor factor, String name) {
         Level level = new Level();
         level.setId(generateUniqueIdentifier());
+        level.setFactor(factor);
         level.setName(name);
         return level;
+    }
+
+    @Override
+    public void removeLevel(String id) {
+        Level levelToRemove = getLevelById(id);
+        levelToRemove.getFactor().removeLevel(levelToRemove);
+        levelToRemove.setFactor(null);
     }
 
     protected String generateUniqueIdentifier() {

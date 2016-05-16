@@ -35,6 +35,11 @@ public class FactorFacadeImpl implements FactorFacade {
         return factorConverter.convert(factor);
     }
 
+    @Override
+    public void removeFactor(String id) {
+        factorService.removeFactor(id);
+    }
+
     @Required
     public void setFactorService(FactorService factorService) {
         this.factorService = factorService;

@@ -1,5 +1,6 @@
 package it.lf.piovra.services;
 
+import it.lf.piovra.models.Factor;
 import it.lf.piovra.models.Level;
 
 /**
@@ -9,7 +10,7 @@ public interface LevelService {
 
     Level getLevelById(String id);
 
-    Level createLevel(String name);
+    Level createLevel(Factor factor, String name);
 
-
+    void removeLevel(String id);
 }

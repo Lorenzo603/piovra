@@ -41,6 +41,13 @@ public class FactorServiceImpl implements FactorService {
     }
 
     @Override
+    public void removeFactor(String id) {
+        Factor factorToRemove = getFactorById(id);
+        factorToRemove.clearLevels();
+        experimentService.getExperiment().removeFactor(factorToRemove);
+    }
+
+    @Override
     public void addLevel(Level level, String factorId) {
         addLevel(level, getFactorById(factorId));
     }

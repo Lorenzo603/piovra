@@ -11,4 +11,6 @@ public interface LevelFacade {
 
     LevelData editLevel(String id, String name);
 
+    void removeLevel(String id);
+
 }

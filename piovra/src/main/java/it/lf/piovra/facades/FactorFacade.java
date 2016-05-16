@@ -11,4 +11,6 @@ public interface FactorFacade {
 
     FactorData editFactor(String id, String name);
 
+    void removeFactor(String id);
+
 }

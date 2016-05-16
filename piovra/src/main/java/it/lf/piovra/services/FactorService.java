@@ -12,6 +12,8 @@ public interface FactorService {
 
     Factor createFactor(String name);
 
+    void removeFactor(String id);
+
     void addLevel(Level level, String factorId);
     void addLevel(Level level, Factor factor);
 
