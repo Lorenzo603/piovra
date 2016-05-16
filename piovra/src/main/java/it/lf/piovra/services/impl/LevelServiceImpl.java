@@ -4,7 +4,7 @@ import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.Factor;
 import it.lf.piovra.models.Level;
 import it.lf.piovra.services.ExperimentService;
-import it.lf.piovra.services.FactorService;
+import it.lf.piovra.services.LevelService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Required;
 
@@ -12,42 +12,37 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Created by Lfurrer on 01/05/2016.
+ * Created by Lorenzo on 16/05/2016.
  */
-public class FactorServiceImpl implements FactorService {
+public class LevelServiceImpl implements LevelService {
 
     private ExperimentService experimentService;
 
     @Override
-    public Factor getFactorById(String id) {
+    public Level getLevelById(String id) {
         Experiment experiment = experimentService.getExperiment();
         List<Factor> factors = experiment.getFactors();
         if (CollectionUtils.isNotEmpty(factors)) {
             for (Factor factor : factors) {
-                if (id.equals(factor.getId())) {
-                    return factor;
+                List<Level> levels = factor.getLevels();
+                if (CollectionUtils.isNotEmpty(levels)) {
+                    for (Level level : levels) {
+                        if (id.equals(level.getId())) {
+                            return level;
+                        }
+                    }
                 }
             }
         }
-        throw new IllegalStateException("Factor with id '" + id + "' not found.");
+        throw new IllegalStateException("Level with id '" + id + "' not found.");
     }
 
     @Override
-    public Factor createFactor(String name) {
-        Factor factor = new Factor();
-        factor.setId(generateUniqueIdentifier());
-        factor.setName(name);
-        return factor;
-    }
-
-    @Override
-    public void addLevel(Level level, String factorId) {
-        addLevel(level, getFactorById(factorId));
-    }
-
-    @Override
-    public void addLevel(Level level, Factor factor) {
-        factor.addLevel(level);
+    public Level createLevel(String name) {
+        Level level = new Level();
+        level.setId(generateUniqueIdentifier());
+        level.setName(name);
+        return level;
     }
 
     protected String generateUniqueIdentifier() {
@@ -58,4 +53,5 @@ public class FactorServiceImpl implements FactorService {
     public void setExperimentService(ExperimentService experimentService) {
         this.experimentService = experimentService;
     }
+
 }

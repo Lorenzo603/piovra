@@ -16,6 +16,7 @@ public class FactorConverterImpl implements FactorConverter {
 
     @Override
     public FactorData convert(Factor source, FactorData target) {
+        target.setId(source.getId());
         target.setName(source.getName());
         return target;
     }

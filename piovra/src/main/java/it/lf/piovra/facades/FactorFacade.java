@@ -7,6 +7,8 @@ import it.lf.piovra.views.FactorData;
  */
 public interface FactorFacade {
 
-    FactorData createFactor(String name);
+    FactorData addFactor(String name);
+
+    FactorData editFactor(String id, String name);
 
 }

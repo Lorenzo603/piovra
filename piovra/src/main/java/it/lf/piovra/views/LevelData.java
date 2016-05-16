@@ -5,7 +5,16 @@ package it.lf.piovra.views;
  */
 public class LevelData {
 
+    private String id;
     private String name;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -14,4 +23,5 @@ public class LevelData {
     public void setName(String name) {
         this.name = name;
     }
+
 }

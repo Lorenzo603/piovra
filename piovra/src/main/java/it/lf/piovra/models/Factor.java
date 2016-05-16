@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Factor {
 
-
+    private String id;
     private String name;
     private List<Level> levels = new ArrayList<>();
 
@@ -24,6 +24,18 @@ public class Factor {
         levels.clear();
     }
 
+    public List<Level> getLevels() {
+        return levels;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,4 +43,6 @@ public class Factor {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
