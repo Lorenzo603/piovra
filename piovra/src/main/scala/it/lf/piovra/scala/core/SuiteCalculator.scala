@@ -1,6 +1,7 @@
 package it.lf.piovra.scala.core
 
 import org.apache.logging.log4j.{LogManager, Logger}
+import scala.collection.JavaConverters._
 
 /**
   * Created by Lfurrer on 28/04/2016.
@@ -30,7 +31,7 @@ class SuiteCalculator {
   )
 
 
-  def calculate() : String = {
+  def calculate() : java.util.List[java.util.List[String]] = {
     val mapList: List[List[String]] = m.values.toList
     val maxLength: Int = mapList.map(l => l.size).max
 
@@ -45,8 +46,12 @@ class SuiteCalculator {
     val validCombinations = allCombinations.filter(isValidCombination(_))
     validCombinations.foreach(println)
 
-    LOG.info("Stamapto da SCALA!")
-    "Creato da SCALA!"
+
+    def convertInJava(list : List[List[String]]) : java.util.List[java.util.List[String]] = {
+      list.map(l => l.asJava).asJava
+    }
+    convertInJava(validCombinations)
   }
+
 
 }

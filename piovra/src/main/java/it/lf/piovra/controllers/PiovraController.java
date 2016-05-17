@@ -10,6 +10,7 @@ import it.lf.piovra.models.Factor;
 import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.FactorData;
 import it.lf.piovra.views.LevelData;
+import it.lf.piovra.views.SuiteData;
 import it.lf.piovra.views.forms.AddFactorForm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,8 +58,7 @@ public class PiovraController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showHome(Model model) {
-        LOG.info(suiteFacade.getString());
+    public String showHome() {
         return HOMEPAGE_VIEW;
     }
 
@@ -109,6 +109,12 @@ public class PiovraController {
     public String removeLevel(@RequestParam String id) {
         levelFacade.removeLevel(id);
         return "OK";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/calculate", method = RequestMethod.POST)
+    public SuiteData calculate() {
+        return suiteFacade.calculate();
     }
 
 }

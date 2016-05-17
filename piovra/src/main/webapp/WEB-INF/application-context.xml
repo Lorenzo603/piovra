@@ -32,7 +32,10 @@
     </bean>
 
     <alias name="suiteFacadeImpl" alias="suiteFacadeImpl"/>
-    <bean id="suiteFacadeImpl" class="it.lf.piovra.facades.impl.SuiteFacadeImpl" />
+    <bean id="suiteFacadeImpl" class="it.lf.piovra.facades.impl.SuiteFacadeImpl" >
+        <property name="suiteService" ref="suiteService" />
+        <property name="experimentService" ref="experimentService" />
+    </bean>
 
     <bean id="gsonUtils" class="com.google.gson.Gson"/>
 
@@ -63,5 +66,7 @@
     <alias name="levelConverterImpl" alias="levelConverter"/>
     <bean id="levelConverterImpl" class="it.lf.piovra.services.impl.LevelConverterImpl" />
 
+    <alias name="suiteServiceImpl" alias="suiteService"/>
+    <bean id="suiteServiceImpl" class="it.lf.piovra.services.impl.SuiteServiceImpl" />
 
 </beans>
