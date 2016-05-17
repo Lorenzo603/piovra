@@ -56,7 +56,9 @@
     </bean>
 
     <alias name="factorConverterImpl" alias="factorConverter"/>
-    <bean id="factorConverterImpl" class="it.lf.piovra.services.impl.FactorConverterImpl" />
+    <bean id="factorConverterImpl" class="it.lf.piovra.services.impl.FactorConverterImpl" >
+        <property name="levelConverter" ref="levelConverter" />
+    </bean>
 
     <alias name="levelConverterImpl" alias="levelConverter"/>
     <bean id="levelConverterImpl" class="it.lf.piovra.services.impl.LevelConverterImpl" />

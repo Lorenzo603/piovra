@@ -1,5 +1,7 @@
 package it.lf.piovra.views;
 
+import java.util.List;
+
 /**
  * Created by Lfurrer on 01/05/2016.
  */
@@ -7,6 +9,7 @@ public class FactorData {
 
     private String id;
     private String name;
+    private List<LevelData> levels;
 
     public String getId() {
         return id;
@@ -25,4 +28,11 @@ public class FactorData {
     }
 
 
+    public List<LevelData> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(List<LevelData> levels) {
+        this.levels = levels;
+    }
 }

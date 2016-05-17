@@ -2,17 +2,13 @@ var ExperimentGridWidget = {
 
     init: function() {
         this.bindUIActions();
-        this.updateView();
     },
 
     bindUIActions: function() {
-        $('.add-factor-button').click(
-            function() {
-                this.
-                $('#factor-list li div.factor-item').last().removeClass('hidden');
-                ExperimentGridWidget.addFactorItem();
-            }
-        );
+        $('.add-factor-button').click(function(e) {
+            var addedFactor = ExperimentGridWidget.addFactor(e);
+            ExperimentGridWidget.addFactorElement($('li list-group-item').length, addedFactor);
+        });
         $('.save-factor-button').click(
             function(e) {
                 e.preventDefault();
@@ -22,7 +18,7 @@ var ExperimentGridWidget = {
                     url: "save-factor",
                     data: {factorName: $('input[name="factorName"]').val()},
                     success: function(data) {
-                        console.log("save-factor call finished with succecss");
+                        console.log("save-factor call finished with success");
                         $('#debug').html("factor name is " + data.name);
                     },
                     error: function() {
@@ -41,25 +37,29 @@ var ExperimentGridWidget = {
         );
     },
 
-    updateView: function() {
-        $.ajax(
-            {
-            type: "GET",
-            url: "getExperiment",
+    addFactor: function(e) {
+        e.preventDefault();
+        console.log("add new factor");
+        var addedFactor = null;
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "add-factor",
+            data: $('#addFactorForm').serializeArray(),
             success: function(data) {
-
+                console.log("add new factor - SUCCESS");
+                addedFactor = data;
             }
-        }
-        );
-        this.addFactorItem(0);
+        });
+        return addedFactor;
     },
 
-    addFactorItem: function(factorIndex) {
+    addFactorElement: function(factorIndex, factorData) {
         var levelTemplate = "";
         $.get("resources/templates/levelTemplate.html", function(partialTemplate) {
             levelTemplate = partialTemplate;
             $.get("resources/templates/factorTemplate.html", function(template) {
-                $('#factor-list').append(Mustache.render(template,{factorIndex: factorIndex}, {levelTemplate: Mustache.render(levelTemplate,{levelIndex: 0})}));
+                $('#factor-list').append(Mustache.render(template,{factorIndex: factorIndex, factorName: factorData.name}, {levelTemplate: Mustache.render(levelTemplate,{levelIndex: 0})}));
             });
         });
     },

@@ -10,15 +10,15 @@ import it.lf.piovra.models.Factor;
 import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.FactorData;
 import it.lf.piovra.views.LevelData;
+import it.lf.piovra.views.forms.AddFactorForm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * Created by Lfurrer on 28/04/2016.
@@ -46,11 +46,19 @@ public class PiovraController {
     @Resource
     private Gson gsonUtils;
 
+    @ModelAttribute("experiment")
+    public ExperimentData getExperimentData() {
+        return experimentFacade.getExperiment();
+    }
+
+    @ModelAttribute("addFactorForm")
+    public AddFactorForm getAddFactorForm() {
+        return new AddFactorForm();
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public String showHome() {
-
+    public String showHome(Model model) {
         LOG.info(suiteFacade.getString());
-
         return HOMEPAGE_VIEW;
     }
 
@@ -63,8 +71,8 @@ public class PiovraController {
 
     @ResponseBody
     @RequestMapping(value = "/add-factor", method = RequestMethod.POST, produces = "application/json")
-    public String addFactor(@RequestParam String factorName) {
-        FactorData factorData = factorFacade.addFactor(factorName);
+    public String addFactor(@Valid AddFactorForm addFactorForm) {
+        FactorData factorData = factorFacade.addFactor(addFactorForm.getName());
         return gsonUtils.toJson(factorData);
     }
 

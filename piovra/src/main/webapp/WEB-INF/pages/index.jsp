@@ -1,6 +1,6 @@
-<%@ taglib prefix="experimentGrid" tagdir="/WEB-INF/tags/experimentGrid" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -25,7 +25,44 @@
 
         <div class="content">
             <ul id="factor-list" class="list-group">
+                <c:forEach var="factor" items="${experiment.factors}" varStatus="factorLoopStatus">
+                    <li class="list-group-item li-factor-${factorLoopStatus.index}">
+                        <div class="factor-item">
+                            Factor name: ${factor.name}
+                            <button>
+                                <span class="glyphicon glyphicon-ok save-factor-button" aria-hidden="true"></span>
+                            </button>
+                            <button>
+                                <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
+                            </button>
 
+                            <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
+                                <div class="level-item div-level-${levelLoopStatus.index}">
+                                    Level name:
+                                    <input name="levelName" type="text" />
+                                    <button>
+                                        <span class="glyphicon glyphicon-ok save-level-button" aria-hidden="true"></span>
+                                    </button>
+                                    <button>
+                                        <span class="glyphicon glyphicon-remove remove-level-button" aria-hidden="true"></span>
+                                    </button>
+
+                                    <button class="btn btn-default add-level-button" type="button">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new Level</span>
+                                    </button>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </li>
+                </c:forEach>
+                <form:form id="addFactorForm" method="POST" action="add-factor" modelAttribute="addFactorForm">
+                    Factor name:
+                    <form:input path="name" type="text" />
+                    <form:errors path="name" />
+                    <button class="btn btn-default add-factor-button" type="submit">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
+                    </button>
+                </form:form>
             </ul>
             <br class="clear">
         </div>
