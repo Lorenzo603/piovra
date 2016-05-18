@@ -5,10 +5,10 @@ var ExperimentGridWidget = {
     },
 
     bindUIActions: function() {
-        $('.add-factor-button').click(function(e) {
-            var addedFactor = ExperimentGridWidget.addFactor(e);
-            ExperimentGridWidget.addFactorElement($('li list-group-item').length, addedFactor);
-        });
+        // $('.add-factor-button').click(function(e) {
+        //    var addedFactor = ExperimentGridWidget.addFactor(e);
+        //    ExperimentGridWidget.addFactorElement($('#factor-list li list-group-item').length, addedFactor);
+        // });
         $('.save-factor-button').click(
             function(e) {
                 e.preventDefault();
@@ -27,12 +27,6 @@ var ExperimentGridWidget = {
                 }
                 );
                 return false;
-            }
-        );
-        $('.add-level-button').click(
-            function() {
-                $('#factor-list li div.level-item').last().removeClass('hidden');
-                ExperimentGridWidget.addLevelItem();
             }
         );
     },
@@ -61,12 +55,6 @@ var ExperimentGridWidget = {
             $.get("resources/templates/factorTemplate.html", function(template) {
                 $('#factor-list').append(Mustache.render(template,{factorIndex: factorIndex, factorName: factorData.name}, {levelTemplate: Mustache.render(levelTemplate,{levelIndex: 0})}));
             });
-        });
-    },
-
-    addLevelItem: function(factorIndex) {
-        $.get("resources/templates/levelTemplate.html", function(template) {
-            $('#factor-list li').eq(factorIndex).append(Mustache.render(template));
         });
     }
     

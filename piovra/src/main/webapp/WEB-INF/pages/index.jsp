@@ -40,8 +40,7 @@
                                 <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
                                     <li class="list-group-item li-level-${levelLoopStatus.index}">
                                         <div class="level-item">
-                                            Level name:
-                                            <input name="levelName" type="text" />
+                                            Level name: ${level.name}
                                             <button>
                                                 <span class="glyphicon glyphicon-ok save-level-button" aria-hidden="true"></span>
                                             </button>
@@ -52,13 +51,15 @@
                                     </li>
                                 </c:forEach>
                             </ul>
-                            <div id="formplaceholder">
+                            <form:form id="addLevelForm-${factor.id}" method="POST" action="add-level" modelAttribute="addLevelForm-${factor.id}">
+                                <form:hidden path="factorId" />
                                 Level name:
-                                <input name="levelName" type="text" />
-                                <button class="btn btn-default add-level-button" type="button">
+                                <form:input path="name" type="text" />
+                                <form:errors path="name" />
+                                <button class="btn btn-default add-level-button" type="submit">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new Level</span>
                                 </button>
-                            </div>
+                            </form:form>
                         </div>
                     </li>
                 </c:forEach>
@@ -71,7 +72,7 @@
                     <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
                 </button>
             </form:form>
-            <br class="clear">
+            <div class="clear">
         </div>
 
         <div class="footer">Lorenzo603 &copy;2016</div>
