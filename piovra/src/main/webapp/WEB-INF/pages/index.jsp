@@ -36,34 +36,41 @@
                                 <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
                             </button>
 
-                            <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
-                                <div class="level-item div-level-${levelLoopStatus.index}">
-                                    Level name:
-                                    <input name="levelName" type="text" />
-                                    <button>
-                                        <span class="glyphicon glyphicon-ok save-level-button" aria-hidden="true"></span>
-                                    </button>
-                                    <button>
-                                        <span class="glyphicon glyphicon-remove remove-level-button" aria-hidden="true"></span>
-                                    </button>
-
-                                    <button class="btn btn-default add-level-button" type="button">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new Level</span>
-                                    </button>
-                                </div>
-                            </c:forEach>
+                            <ul>
+                                <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
+                                    <li class="list-group-item li-level-${levelLoopStatus.index}">
+                                        <div class="level-item">
+                                            Level name:
+                                            <input name="levelName" type="text" />
+                                            <button>
+                                                <span class="glyphicon glyphicon-ok save-level-button" aria-hidden="true"></span>
+                                            </button>
+                                            <button>
+                                                <span class="glyphicon glyphicon-remove remove-level-button" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                            <div id="formplaceholder">
+                                Level name:
+                                <input name="levelName" type="text" />
+                                <button class="btn btn-default add-level-button" type="button">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new Level</span>
+                                </button>
+                            </div>
                         </div>
                     </li>
                 </c:forEach>
-                <form:form id="addFactorForm" method="POST" action="add-factor" modelAttribute="addFactorForm">
-                    Factor name:
-                    <form:input path="name" type="text" />
-                    <form:errors path="name" />
-                    <button class="btn btn-default add-factor-button" type="submit">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
-                    </button>
-                </form:form>
             </ul>
+            <form:form id="addFactorForm" method="POST" action="add-factor" modelAttribute="addFactorForm">
+                Factor name:
+                <form:input path="name" type="text" />
+                <form:errors path="name" />
+                <button class="btn btn-default add-factor-button" type="submit">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
+                </button>
+            </form:form>
             <br class="clear">
         </div>
 

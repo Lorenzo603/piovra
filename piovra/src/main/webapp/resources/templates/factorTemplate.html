@@ -8,12 +8,17 @@
             <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
         </button>
 
-        <button class="btn btn-default add-factor-button" type="button">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
-        </button>
-
-
-        {{> levelTemplate}}
-
+        <!--
+        <ul id="level-list" class="list-group">
+            {{> levelTemplate}}
+        </ul>
+        -->
+        <div id="formplaceholder">
+            Level name:
+            <input name="levelName" type="text" />
+            <button class="btn btn-default add-level-button" type="button">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new Level</span>
+            </button>
+        </div>
     </div>
 </li>
