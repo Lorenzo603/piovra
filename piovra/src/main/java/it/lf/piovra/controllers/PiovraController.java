@@ -35,6 +35,7 @@ public class PiovraController {
 
     private static final String REDIRECT_PREFIX = "redirect:";
     private static final String HOMEPAGE_VIEW = "index";
+    private static final String CALCULATE_RESULT_VIEW = "calculateResult";
 
     @Resource
     private SuiteFacade suiteFacade;
@@ -122,10 +123,11 @@ public class PiovraController {
         return "OK";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/calculate", method = RequestMethod.POST)
-    public SuiteData calculate() {
-        return suiteFacade.calculate();
+    public String calculate(Model model) {
+        SuiteData suiteData = suiteFacade.calculate();
+        model.addAttribute("suite", suiteData);
+        return CALCULATE_RESULT_VIEW;
     }
 
 }

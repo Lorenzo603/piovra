@@ -1,7 +1,12 @@
 package it.lf.piovra.scala.core
 
+import java.util
+
 import org.apache.logging.log4j.{LogManager, Logger}
+
 import scala.collection.JavaConverters._
+import collection.JavaConversions._
+import scala.collection.mutable.ListBuffer
 
 /**
   * Created by Lfurrer on 28/04/2016.
@@ -31,8 +36,16 @@ class SuiteCalculator {
   )
 
 
-  def calculate() : java.util.List[java.util.List[String]] = {
-    val mapList: List[List[String]] = m.values.toList
+  def calculate(javaMap : java.util.Map[String, java.util.List[String]]) : java.util.List[java.util.List[String]] = {
+
+    def convertToScala(javaMap : java.util.Map[String, java.util.List[String]]) : Map[String, List[String]] = {
+      val scalaMap = scala.collection.mutable.Map[String, List[String]]()
+      for (key : String <- javaMap.keySet()) {
+        scalaMap += key -> javaMap.get(key).asScala.toList
+      }
+      scalaMap.toMap
+    }
+    val mapList: List[List[String]] = convertToScala(javaMap).values.toList
     val maxLength: Int = mapList.map(l => l.size).max
 
     val allCombinations: List[List[String]] =
@@ -47,10 +60,11 @@ class SuiteCalculator {
     validCombinations.foreach(println)
 
 
-    def convertInJava(list : List[List[String]]) : java.util.List[java.util.List[String]] = {
-      list.map(l => l.asJava).asJava
+    def convertToJava(list : List[List[String]]) : java.util.List[java.util.List[String]] = {
+      val l = list.map(sublist => java.util.Arrays.asList(sublist : _*))
+      java.util.Arrays.asList(l : _*)
     }
-    convertInJava(validCombinations)
+    convertToJava(validCombinations)
   }
 
 

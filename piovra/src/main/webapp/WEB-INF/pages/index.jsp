@@ -72,13 +72,18 @@
                     <span class="glyphicon glyphicon-plus" aria-hidden="true">Add new factor</span>
                 </button>
             </form:form>
-            <div class="clear">
-        </div>
+            <div class="clear" />
 
-        <div class="footer">Lorenzo603 &copy;2016</div>
-        <div id="debug">
-            DEBUG text
-		</div>
+            <div>
+                <form:form id="calculateForm" method="POST" action="calculate">
+                    <button class="btn btn-default" type="submit">Calculate</button>
+                </form:form>
+            </div>
+
+            <div class="footer">Lorenzo603 &copy;2016</div>
+            <div id="debug">
+                DEBUG text
+            </div>
     </div>
 
     <script type="text/javascript">
