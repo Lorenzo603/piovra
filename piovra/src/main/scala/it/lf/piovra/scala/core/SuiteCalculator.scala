@@ -39,11 +39,7 @@ class SuiteCalculator {
   def calculate(javaMap : java.util.Map[String, java.util.List[String]]) : java.util.List[java.util.List[String]] = {
 
     def convertToScala(javaMap : java.util.Map[String, java.util.List[String]]) : Map[String, List[String]] = {
-      val scalaMap = scala.collection.mutable.Map[String, List[String]]()
-      for (key : String <- javaMap.keySet()) {
-        scalaMap += key -> javaMap.get(key).asScala.toList
-      }
-      scalaMap.toMap
+      javaMap.mapValues(listValue => listValue.asScala.toList).toMap
     }
     val mapList: List[List[String]] = convertToScala(javaMap).values.toList
     val maxLength: Int = mapList.map(l => l.size).max
@@ -60,12 +56,10 @@ class SuiteCalculator {
     validCombinations.foreach(println)
 
 
-    def convertToJava(list : List[List[String]]) : java.util.List[java.util.List[String]] = {
-      val l = list.map(sublist => java.util.Arrays.asList(sublist : _*))
-      java.util.Arrays.asList(l : _*)
+    def convertToJava(scalaList : List[List[String]]) : java.util.List[java.util.List[String]] = {
+      scalaList.map(listValue => listValue.asJava).asJava
     }
     convertToJava(validCombinations)
   }
-
 
 }

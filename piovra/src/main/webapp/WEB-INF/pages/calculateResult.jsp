@@ -16,10 +16,10 @@
 
 List of cases:<br>
 <table>
-    <c:forEach var="case" items="${suite.cases}">
+    <c:forEach var="caseList" items="${suite.cases}">
         <tr>
-            <c:forEach var="level" items="${case}">
-                <td>${level}</td>
+            <c:forEach var="levelName" items="${caseList}">
+                <td>${levelName}</td>
             </c:forEach>
         </tr>
     </c:forEach>
