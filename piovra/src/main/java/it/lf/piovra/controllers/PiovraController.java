@@ -122,25 +122,34 @@ public class PiovraController {
         return REDIRECT_PREFIX + "/";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/edit-factor", method = RequestMethod.POST, produces = "application/json")
+    public String editFactor(@Valid EditFactorForm editFactorForm) {
+        factorFacade.editFactor(editFactorForm.getId(), editFactorForm.getNewName());
+        return REDIRECT_PREFIX + "/";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/remove-factor", method = RequestMethod.POST)
+    public String removeFactor(@Valid RemoveFactorForm removeFactorForm) {
+        factorFacade.removeFactor(removeFactorForm.getId());
+        return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/add-level", method = RequestMethod.POST)
+    public String addLevel(@Valid AddLevelForm addLevelForm) {
         levelFacade.addLevel(addLevelForm.getName(), addLevelForm.getFactorId());
         return REDIRECT_PREFIX + "/";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/edit-level", method = RequestMethod.POST)
+    public String editLevel(@Valid EditLevelForm editLevelForm) {
+        levelFacade.editLevel(editLevelForm.getId(), editLevelForm.getNewName());
+        return REDIRECT_PREFIX + "/";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/remove-level", method = RequestMethod.POST)
+    public String removeLevel(@Valid RemoveLevelForm removeLevelForm) {
+        levelFacade.removeLevel(removeLevelForm.getId());
+        return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/calculate", method = RequestMethod.POST)
