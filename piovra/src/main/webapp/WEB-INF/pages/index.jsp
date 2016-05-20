@@ -29,24 +29,35 @@
                     <li class="list-group-item li-factor-${factorLoopStatus.index}">
                         <div class="factor-item">
                             Factor name: ${factor.name}
-                            <button>
-                                <span class="glyphicon glyphicon-ok save-factor-button" aria-hidden="true"></span>
-                            </button>
-                            <button>
-                                <span class="glyphicon glyphicon-remove remove-factor-button" aria-hidden="true"></span>
-                            </button>
-
+                            <form:form id="editFactorForm-${factor.id}" method="POST" action="edit-factor" modelAttribute="editFactorForm-${factor.id}">
+                                <form:hidden path="id" />
+                                <button class="edit-factor-button" type="submit">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </button>
+                            </form:form>
+                            <form:form id="removeFactorForm-${factor.id}" method="POST" action="remove-factor" modelAttribute="removeFactorForm-${factor.id}">
+                                <form:hidden path="id" />
+                                <button class="remove-factor-button" type="submit">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
+                            </form:form>
                             <ul>
                                 <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
                                     <li class="list-group-item li-level-${levelLoopStatus.index}">
                                         <div class="level-item">
                                             Level name: ${level.name}
-                                            <button>
-                                                <span class="glyphicon glyphicon-ok save-level-button" aria-hidden="true"></span>
-                                            </button>
-                                            <button>
-                                                <span class="glyphicon glyphicon-remove remove-level-button" aria-hidden="true"></span>
-                                            </button>
+                                            <form:form id="editLevelForm-${level.id}" method="POST" action="edit-level" modelAttribute="editLevelForm-${level.id}">
+                                                <form:hidden path="id" />
+                                                <button class="edit-level-button" type="submit">
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                </button>
+                                            </form:form>
+                                            <form:form id="removeLevelForm-${level.id}" method="POST" action="remove-level" modelAttribute="removeLevelForm-${level.id}">
+                                                <form:hidden path="id" />
+                                                <button class="remove-level-button" type="submit">
+                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                </button>
+                                            </form:form>
                                         </div>
                                     </li>
                                 </c:forEach>

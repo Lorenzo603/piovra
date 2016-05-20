@@ -10,10 +10,22 @@ button .add-factor-button {
     color: green;
 }
 
-button .save-factor-button {
+button .edit-factor-button {
     color: green;
 }
 
-button .clear-factor-button {
+button .remove-factor-button {
+    color: red;
+}
+
+button .add-level-button {
+    color: green;
+}
+
+button .edit-level-button {
+    color: green;
+}
+
+button .remove-level-button {
     color: red;
 }

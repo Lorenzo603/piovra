@@ -5,20 +5,19 @@ import it.lf.piovra.facades.ExperimentFacade;
 import it.lf.piovra.facades.FactorFacade;
 import it.lf.piovra.facades.LevelFacade;
 import it.lf.piovra.facades.SuiteFacade;
-import it.lf.piovra.models.Experiment;
-import it.lf.piovra.models.Factor;
 import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.FactorData;
 import it.lf.piovra.views.LevelData;
 import it.lf.piovra.views.SuiteData;
-import it.lf.piovra.views.forms.AddFactorForm;
-import it.lf.piovra.views.forms.AddLevelForm;
-import org.apache.commons.collections4.CollectionUtils;
+import it.lf.piovra.views.forms.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -52,11 +51,6 @@ public class PiovraController {
     @Resource
     private Gson gsonUtils;
 
-    @ModelAttribute("addFactorForm")
-    public AddFactorForm getAddFactorForm() {
-        return new AddFactorForm();
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public String showHome(Model model) {
         addModelAttributes(model);
@@ -67,13 +61,52 @@ public class PiovraController {
         ExperimentData experimentData = experimentFacade.getExperiment();
         model.addAttribute("experiment", experimentData);
 
+        model.addAttribute("addFactorForm", new AddFactorForm());
+
         List<FactorData> factors = experimentData.getFactors();
         for (FactorData factorData : factors) {
-            AddLevelForm addLevelForm = new AddLevelForm();
             String factorId = factorData.getId();
-            addLevelForm.setFactorId(factorId);
-            model.addAttribute("addLevelForm-" + factorId, addLevelForm);
+            addEditFactorFormModelAttribute(model, factorId);
+            addRemoveFactorFormModelAttribute(model, factorId);
+
+            for (LevelData levelData : factorData.getLevels()) {
+                String levelId = levelData.getId();
+                addEditLevelFormModelAttribute(model, levelId);
+                addRemoveLevelFormModelAttribute(model, levelId);
+            }
+
+            addAddLevelFormModelAttribute(model, factorId);
         }
+    }
+
+    protected void addEditFactorFormModelAttribute(Model model, String factorId) {
+        EditFactorForm editFactorForm = new EditFactorForm();
+        editFactorForm.setId(factorId);
+        model.addAttribute("editFactorForm-" + factorId, editFactorForm);
+    }
+
+    protected void addRemoveFactorFormModelAttribute(Model model, String factorId) {
+        RemoveFactorForm removeFactorForm = new RemoveFactorForm();
+        removeFactorForm.setId(factorId);
+        model.addAttribute("removeFactorForm-" + factorId, removeFactorForm);
+    }
+
+    protected void addAddLevelFormModelAttribute(Model model, String factorId) {
+        AddLevelForm addLevelForm = new AddLevelForm();
+        addLevelForm.setFactorId(factorId);
+        model.addAttribute("addLevelForm-" + factorId, addLevelForm);
+    }
+
+    protected void addEditLevelFormModelAttribute(Model model, String levelId) {
+        EditLevelForm editLevelForm = new EditLevelForm();
+        editLevelForm.setId(levelId);
+        model.addAttribute("editLevelForm-" + levelId, editLevelForm);
+    }
+
+    protected void addRemoveLevelFormModelAttribute(Model model, String levelId) {
+        RemoveLevelForm removeLevelForm = new RemoveLevelForm();
+        removeLevelForm.setId(levelId);
+        model.addAttribute("removeLevelForm-" + levelId, removeLevelForm);
     }
 
     @ResponseBody
@@ -84,43 +117,30 @@ public class PiovraController {
     }
 
     @RequestMapping(value = "/add-factor", method = RequestMethod.POST, produces = "application/json")
-    public String addFactor(@Valid AddFactorForm addFactorForm, Model model) {
+    public String addFactor(@Valid AddFactorForm addFactorForm) {
         factorFacade.addFactor(addFactorForm.getName());
         return REDIRECT_PREFIX + "/";
     }
 
     @ResponseBody
     @RequestMapping(value = "/edit-factor", method = RequestMethod.POST, produces = "application/json")
-    public String editFactor(@RequestParam String id, @RequestParam String factorName) {
-        FactorData factorData = factorFacade.editFactor(id, factorName);
-        return gsonUtils.toJson(factorData);
     }
 
     @ResponseBody
     @RequestMapping(value = "/remove-factor", method = RequestMethod.POST)
-    public String removeFactor(@RequestParam String id) {
-        factorFacade.removeFactor(id);
-        return "OK";
     }
 
     @RequestMapping(value = "/add-level", method = RequestMethod.POST)
-    public String addLevel(@Valid AddLevelForm addLevelForm, Model model) {
         levelFacade.addLevel(addLevelForm.getName(), addLevelForm.getFactorId());
         return REDIRECT_PREFIX + "/";
     }
 
     @ResponseBody
     @RequestMapping(value = "/edit-level", method = RequestMethod.POST)
-    public String editLevel(@RequestParam String id, @RequestParam String levelName) {
-        LevelData levelData = levelFacade.editLevel(id, levelName);
-        return gsonUtils.toJson(levelData);
     }
 
     @ResponseBody
     @RequestMapping(value = "/remove-level", method = RequestMethod.POST)
-    public String removeLevel(@RequestParam String id) {
-        levelFacade.removeLevel(id);
-        return "OK";
     }
 
     @RequestMapping(value = "/calculate", method = RequestMethod.POST)

@@ -5,11 +5,7 @@ var ExperimentGridWidget = {
     },
 
     bindUIActions: function() {
-        // $('.add-factor-button').click(function(e) {
-        //    var addedFactor = ExperimentGridWidget.addFactor(e);
-        //    ExperimentGridWidget.addFactorElement($('#factor-list li list-group-item').length, addedFactor);
-        // });
-        $('.save-factor-button').click(
+        $('.edit-factor-button').click(
             function(e) {
                 e.preventDefault();
                 $.ajax(
@@ -30,6 +26,10 @@ var ExperimentGridWidget = {
             }
         );
     },
+
+
+    // keep them fo reference
+    // TODO write article for moustache js partials
 
     addFactor: function(e) {
         e.preventDefault();
