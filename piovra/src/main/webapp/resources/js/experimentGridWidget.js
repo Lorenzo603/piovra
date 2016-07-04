@@ -1,6 +1,7 @@
 var ExperimentGridWidget = {
 
     init: function() {
+        this.restoreCollapsibleState();
         this.bindUIActions();
     },
 
@@ -23,6 +24,22 @@ var ExperimentGridWidget = {
                 }
                 );
                 return false;
+            }
+        );
+
+        $('.accordion-toggle').click(
+            function() {
+                var cookieId = $(this).attr('href');
+                var opened = Cookies.get(cookieId);
+                if (opened === undefined) {
+                    Cookies.set(cookieId, "true");
+                } else {
+                    if (opened == "true") {
+                        Cookies.set(cookieId, "false");
+                    } else {
+                        Cookies.set(cookieId, "true");
+                    }
+                }
             }
         );
     },
@@ -56,6 +73,18 @@ var ExperimentGridWidget = {
                 $('#factor-list').append(Mustache.render(template,{factorIndex: factorIndex, factorName: factorData.name}, {levelTemplate: Mustache.render(levelTemplate,{levelIndex: 0})}));
             });
         });
+    },
+
+    restoreCollapsibleState: function() {
+        $('.accordion-toggle').each(
+            function() {
+                var elementId = $(this).attr('href');
+                var opened = Cookies.get(elementId);
+                if (opened == "true") {
+                    $(elementId).collapse();
+                }
+            }
+        );
     }
     
 }

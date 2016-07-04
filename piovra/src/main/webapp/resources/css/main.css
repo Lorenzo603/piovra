@@ -6,26 +6,97 @@
 	clear: both;
 }
 
-button .add-factor-button {
+button.add-button {
+    color: white;
+    background-color: green;
+}
+button.add-button:hover {
     color: green;
+    background-color: white;
 }
 
-button .edit-factor-button {
-    color: green;
+button.edit-button {
+    color: white;
+    background-color: #F1C40F;
+    padding: 3px 6px;
+    margin-left: 5px;
 }
 
-button .remove-factor-button {
+button.edit-button:hover {
+    color: #F1C40F;
+    background-color: white;
+}
+
+button.remove-button {
+    color: white;
+    background-color: red;
+    padding: 3px 6px;
+    margin-left: 5px;
+}
+
+button.remove-button:hover {
     color: red;
+    background-color: white;
 }
 
-button .add-level-button {
-    color: green;
+.factor-row {
+    padding: 10px 15px;
 }
 
-button .edit-level-button {
-    color: green;
+.add-factor-row {
+    background-color: #FFE094;
 }
 
-button .remove-level-button {
-    color: red;
+.factor-item > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.factor-item-name {
+    font-weight: bold;
+    font-size: large;
+}
+
+.factor-item-actions {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.factor-item-actions > form {
+    margin: 0px;
+}
+
+.factor-item > .factor-item-levels > form {
+    padding-top: 10px;
+    padding-left: 40px;
+}
+
+.level-item-name {
+    font-size: medium;
+}
+
+.level-item-actions {
+    display: flex;
+    align-items: center;
+}
+
+.level-item-actions > form {
+    margin: 0px;
+}
+
+li:nth-child(even) {
+    background-color: #CCFFCC;
+}
+
+.accordion-toggle:before {
+    /* symbol for opening panels */
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: left;
+}
+
+.accordion-toggle.collapsed:before {
+    content: "\e080"; /* symbol for collapsed panels */
 }
