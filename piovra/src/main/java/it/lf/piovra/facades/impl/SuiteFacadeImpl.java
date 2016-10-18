@@ -1,7 +1,6 @@
 package it.lf.piovra.facades.impl;
 
 import it.lf.piovra.facades.SuiteFacade;
-import it.lf.piovra.scala.core.SuiteCalculator;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.SuiteService;
 import it.lf.piovra.views.SuiteData;

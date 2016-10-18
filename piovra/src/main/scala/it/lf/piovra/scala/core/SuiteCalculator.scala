@@ -8,9 +8,7 @@ import scala.collection.JavaConverters._
 import collection.JavaConversions._
 import scala.collection.mutable.ListBuffer
 
-/**
-  * Created by Lfurrer on 28/04/2016.
-  */
+
 class SuiteCalculator {
 
   val LOG: Logger = LogManager.getLogger(SuiteCalculator.this.getClass)
@@ -42,6 +40,9 @@ class SuiteCalculator {
       javaMap.mapValues(listValue => listValue.asScala.toList).toMap
     }
     val mapList: List[List[String]] = convertToScala(javaMap).values.toList
+
+    val realValueMapping : Map[String, String] = mapList.map(row => row.map(value => (mapList.indexOf(row).toString + row.indexOf(value).toString) -> value )).flatten.toMap
+
     val maxLength: Int = mapList.map(l => l.size).max
 
     val allCombinations: List[List[String]] =
@@ -55,11 +56,13 @@ class SuiteCalculator {
     val validCombinations = allCombinations.filter(isValidCombination(_))
     validCombinations.foreach(println)
 
+    val remappedValidCombinations = validCombinations.map(l => l.map(v => realValueMapping.getOrDefault(v, "") ) )
+    remappedValidCombinations.foreach(println)
 
     def convertToJava(scalaList : List[List[String]]) : java.util.List[java.util.List[String]] = {
       scalaList.map(listValue => listValue.asJava).asJava
     }
-    convertToJava(validCombinations)
+    convertToJava(remappedValidCombinations)
   }
 
 }
