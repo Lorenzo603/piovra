@@ -9,14 +9,19 @@ var ExperimentGridWidget = {
         $('#expand-all-button').click(
             function() {
                 $('.factor-item-levels').collapse('show');
+                ExperimentGridWidget.saveAllCollapsibleStates();
             }
         );
 
         $('#collapse-all-button').click(
             function() {
                 $('.factor-item-levels').collapse('hide');
+                ExperimentGridWidget.saveAllCollapsibleStates();
             }
         );
+
+        $('.factor-item-levels').on('shown.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
+        $('.factor-item-levels').on('hidden.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
 
         $('.edit-factor-button').click(
             function(e) {
@@ -39,21 +44,7 @@ var ExperimentGridWidget = {
             }
         );
 
-        $('.accordion-toggle').click(
-            function() {
-                var cookieId = $(this).attr('href');
-                var opened = Cookies.get(cookieId);
-                if (opened === undefined) {
-                    Cookies.set(cookieId, "true");
-                } else {
-                    if (opened == "true") {
-                        Cookies.set(cookieId, "false");
-                    } else {
-                        Cookies.set(cookieId, "true");
-                    }
-                }
-            }
-        );
+
     },
 
 
@@ -87,13 +78,27 @@ var ExperimentGridWidget = {
         });
     },
 
+    saveAllCollapsibleStates: function() {
+        $('.accordion-toggle').each(function(){
+            ExperimentGridWidget.saveCollapsibleState($(this));
+        });
+    },
+
+    saveCollapsibleState: function(element) {
+        var elementId = element.attr('href');
+        var collapsed = element.hasClass('collapsed');
+        Cookies.set(elementId, collapsed);
+    },
+
     restoreCollapsibleState: function() {
         $('.accordion-toggle').each(
             function() {
                 var elementId = $(this).attr('href');
-                var opened = Cookies.get(elementId);
-                if (opened == "true") {
-                    $(elementId).collapse();
+                var collapsed = Cookies.get(elementId);
+                if (collapsed == "true") {
+                    $(elementId).collapse('hide');
+                } else {
+                    $(elementId).collapse('show');
                 }
             }
         );

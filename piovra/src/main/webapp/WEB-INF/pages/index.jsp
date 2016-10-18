@@ -17,7 +17,7 @@
 <body>
     <div id="wrapper" class="container-fluid">
         <div class="top">
-			<a href="/">
+			<a href="/piovra">
 				<img class="piovra-logo" src="resources/img/piovra-logo.png"/>
 			</a>
 			<h1>Piovra</h1>
