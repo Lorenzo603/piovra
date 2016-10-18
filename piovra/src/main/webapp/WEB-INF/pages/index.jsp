@@ -36,22 +36,22 @@
                             <li class="list-group-item li-factor-${factorLoopStatus.index}">
                                 <div class="factor-item">
                                     <a class="accordion-toggle collapsed" href="#factor-levels-${factorLoopStatus.index}" data-toggle="collapse" aria-expanded="false" aria-controls="factor-levels-${factorLoopStatus.index}">
-                                        <div class="factor-item-actions">
-                                            <span class="factor-item-name">${factor.name}</span>
-                                            <form:form id="editFactorForm-${factor.id}" method="POST" action="edit-factor" modelAttribute="editFactorForm-${factor.id}">
-                                                <form:hidden path="id" />
-                                                <button class="btn btn-default edit-button" type="submit">
-                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                </button>
-                                            </form:form>
-                                            <form:form id="removeFactorForm-${factor.id}" method="POST" action="remove-factor" modelAttribute="removeFactorForm-${factor.id}">
-                                                <form:hidden path="id" />
-                                                <button class="btn btn-default remove-button" type="submit">
-                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                </button>
-                                            </form:form>
-                                        </div>
                                     </a>
+                                    <div class="factor-item-actions">
+                                        <span class="factor-item-name">${factor.name}</span>
+                                        <form:form id="editFactorForm-${factor.id}" method="POST" action="edit-factor" modelAttribute="editFactorForm-${factor.id}">
+                                            <form:hidden path="id" />
+                                            <button class="btn btn-default edit-button" type="submit">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                        </form:form>
+                                        <form:form id="removeFactorForm-${factor.id}" method="POST" action="remove-factor" modelAttribute="removeFactorForm-${factor.id}">
+                                            <form:hidden path="id" />
+                                            <button class="btn btn-default remove-button" type="submit">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            </button>
+                                        </form:form>
+                                    </div>
                                     <div class="factor-item-levels collapse" id="factor-levels-${factorLoopStatus.index}">
                                         <ul>
                                             <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
