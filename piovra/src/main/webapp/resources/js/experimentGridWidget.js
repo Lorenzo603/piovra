@@ -6,6 +6,18 @@ var ExperimentGridWidget = {
     },
 
     bindUIActions: function() {
+        $('#expand-all-button').click(
+            function() {
+                $('.factor-item-levels').collapse('show');
+            }
+        );
+
+        $('#collapse-all-button').click(
+            function() {
+                $('.factor-item-levels').collapse('hide');
+            }
+        );
+
         $('.edit-factor-button').click(
             function(e) {
                 e.preventDefault();
