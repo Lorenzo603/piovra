@@ -100,3 +100,7 @@ li:nth-child(even) {
 .accordion-toggle.collapsed:before {
     content: "\e080"; /* symbol for collapsed panels */
 }
+
+.case-considered {
+    background-color: #FF0000 !important;
+}

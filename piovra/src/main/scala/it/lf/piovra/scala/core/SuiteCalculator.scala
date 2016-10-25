@@ -43,7 +43,7 @@ class SuiteCalculator {
 
     val realValueMapping : Map[String, String] = mapList.map(row => row.map(value => (mapList.indexOf(row).toString + row.indexOf(value).toString) -> value )).flatten.toMap
 
-    val maxLength: Int = mapList.map(l => l.size).max
+    val maxLength: Int = mapList.size
 
     val allCombinations: List[List[String]] =
       mapList.flatMap(row => row.indices.toList.map(colIndex => mapList.indexOf(row).toString + colIndex.toString))

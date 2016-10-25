@@ -10,20 +10,56 @@
     <script type="text/javascript" src="resources/js/lib/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/bootstrap.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/mustache.min.js"></script>
-    <script type="text/javascript" src="resources/js/experimentGridWidget.js"></script>
 </head>
 <body>
 
-List of cases:<br>
-<table>
-    <c:forEach var="caseList" items="${suite.cases}">
-        <tr>
-            <c:forEach var="levelName" items="${caseList}">
-                <td>${levelName}</td>
-            </c:forEach>
-        </tr>
-    </c:forEach>
-</table>
+    <div id="wrapper" class="container-fluid">
+        <div class="top">
+            <a href="/piovra">
+                <img class="piovra-logo" src="resources/img/piovra-logo.png"/>
+            </a>
+            <h1>Piovra</h1>
+            <br class="clear">
+        </div>
 
+        <div class="content">
+            <h1>List of cases:</h1>
+            <table class="table table-striped table-bordered">
+                <c:forEach var="caseList" items="${suite.cases}" varStatus="status">
+                    <tr id="tr-case-${status.index}">
+                        <th>
+                            <input id="checkbox-case-${status.index}" type="checkbox">
+                        </th>
+                        <th>Case ${status.count}</th>
+                        <c:forEach var="levelName" items="${caseList}">
+                            <td>${levelName}</td>
+                        </c:forEach>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <div class="footer">Lorenzo603 &copy;2016</div>
+        <div id="debug">
+            DEBUG text
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(
+            function() {
+                $('input[type="checkbox"]').change(
+                function() {
+                        var caseIndex = $(this).attr('id').split("-")[2];
+                        if (this.checked) {
+                            $('#tr-case-'+caseIndex).addClass('case-considered');
+                        } else {
+                            $('#tr-case-'+caseIndex).removeClass('case-considered');
+                        }
+                    }
+                );
+        });
+
+    </script>
 </body>
 </html>
