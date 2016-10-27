@@ -47,7 +47,28 @@ button.remove-button:hover {
     background-color: #FFE094;
 }
 
-.factor-item > a {
+.factor-table {
+    padding: 0px;
+}
+
+#factor-list {
+    margin-bottom: 0px;
+}
+
+.factor-list-group-item {
+    padding: 0px;
+}
+
+.factor-item-header {
+    background-color: darkblue;
+    color: white;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+}
+
+.factor-item-header > a {
     color: inherit;
     text-decoration: none;
 }
@@ -60,7 +81,6 @@ button.remove-button:hover {
 .factor-item-actions {
     display: flex;
     align-items: center;
-    padding-bottom: 5px;
     padding-left: 5px;
 }
 
@@ -69,8 +89,15 @@ button.remove-button:hover {
 }
 
 .factor-item > .factor-item-levels > form {
-    padding-top: 10px;
-    padding-left: 40px;
+    background-color: cornflowerblue;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+}
+
+.factor-item > .factor-item-levels > ul {
+    padding: 0px;
 }
 
 .level-item-name {
@@ -86,8 +113,11 @@ button.remove-button:hover {
     margin: 0px;
 }
 
-li:nth-child(even) {
-    background-color: #CCFFCC;
+.factor-item-levels {
+    color: black;
+}
+.factor-item-levels > ul > li:nth-child(even) {
+    background-color: azure;
 }
 
 .accordion-toggle:before {
@@ -101,6 +131,22 @@ li:nth-child(even) {
     content: "\e080"; /* symbol for collapsed panels */
 }
 
+
+.table th {
+    background-color: darkblue;
+    color: white;
+}
+
+.table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
 .case-considered {
-    background-color: #FF0000 !important;
+    background-color: darkseagreen !important;
+}
+
+#exportToExcelForm > button {
+    margin-bottom: 10px;
 }

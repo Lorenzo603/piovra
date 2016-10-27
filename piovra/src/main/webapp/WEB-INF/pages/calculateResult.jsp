@@ -24,13 +24,19 @@
 
         <div class="content">
             <h1>List of cases:</h1>
+            <form:form id="exportToExcelForm" method="POST" action="export-to-excel">
+                <button class="btn btn-success" type="submit">
+                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true" ></span>
+                    Export to Excel
+                </button>
+            </form:form>
             <table class="table table-striped table-bordered">
                 <c:forEach var="caseList" items="${suite.cases}" varStatus="status">
                     <tr id="tr-case-${status.index}">
-                        <th>
+                        <th class="fit">
                             <input id="checkbox-case-${status.index}" type="checkbox">
                         </th>
-                        <th>Case ${status.count}</th>
+                        <th class="fit">Case ${status.count}</th>
                         <c:forEach var="levelName" items="${caseList}">
                             <td>${levelName}</td>
                         </c:forEach>
@@ -40,7 +46,6 @@
         </div>
         <div class="footer">Lorenzo603 &copy;2016</div>
         <div id="debug">
-            DEBUG text
         </div>
     </div>
 
