@@ -24,12 +24,14 @@
 
         <div class="content">
             <h1>List of cases:</h1>
-            <form:form id="exportToExcelForm" method="POST" action="export-to-excel">
-                <button class="btn btn-success" type="submit">
-                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true" ></span>
-                    Export to Excel
-                </button>
-            </form:form>
+            <div class="export-actions">
+                <a id="export-to-excel-link" href="export-to-excel">
+                    <button class="btn btn-success" type="submit">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true" ></span>
+                        Export to Excel
+                    </button>
+                </a>
+            </div>
             <table class="table table-striped table-bordered">
                 <c:forEach var="caseList" items="${suite.cases}" varStatus="status">
                     <tr id="tr-case-${status.index}">

@@ -10,8 +10,10 @@ import it.lf.piovra.views.FactorData;
 import it.lf.piovra.views.LevelData;
 import it.lf.piovra.views.SuiteData;
 import it.lf.piovra.views.forms.*;
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -157,6 +161,19 @@ public class PiovraController {
         SuiteData suiteData = suiteFacade.calculate();
         model.addAttribute("suite", suiteData);
         return CALCULATE_RESULT_VIEW;
+    }
+
+    @RequestMapping(value = "/export-to-excel", method = RequestMethod.GET)
+    public void exportToExcel(HttpServletResponse response) {
+        HSSFWorkbook excelFile = suiteFacade.generateExcelFile();
+        try {
+            excelFile.write(response.getOutputStream());
+            response.setHeader("Content-disposition", "attachment; filename=" + "experiment.xls");
+            response.setContentType("application/vnd.ms-excel");
+            response.flushBuffer();
+        } catch (IOException ioe) {
+            LOG.error("Error while sending generated Excel file", ioe);
+        }
     }
 
 }

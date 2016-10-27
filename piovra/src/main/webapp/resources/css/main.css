@@ -147,6 +147,6 @@ button.remove-button:hover {
     background-color: darkseagreen !important;
 }
 
-#exportToExcelForm > button {
+.export-actions {
     margin-bottom: 10px;
 }
