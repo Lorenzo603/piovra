@@ -33,7 +33,7 @@
                 <div class="panel-body factor-table">
                     <ul id="factor-list" class="list-group">
                         <c:forEach var="factor" items="${experiment.factors}" varStatus="factorLoopStatus">
-                            <li id="li-factor-${factorLoopStatus.index}" class="list-group-item factor-list-group-item">
+                            <li id="li-factor-${factorLoopStatus.index}" class="list-group-item">
                                 <div class="factor-item">
                                     <div class="factor-item-header">
                                         <a class="accordion-toggle collapsed" href="#factor-levels-${factorLoopStatus.index}" data-toggle="collapse" aria-expanded="false" aria-controls="factor-levels-${factorLoopStatus.index}">
@@ -57,7 +57,7 @@
                                     <div class="factor-item-levels collapse" id="factor-levels-${factorLoopStatus.index}">
                                         <ul>
                                             <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
-                                                <li class="list-group-item li-level-${levelLoopStatus.index}">
+                                                <li id="li-level-${levelLoopStatus.index}" class="list-group-item">
                                                     <div class="level-item-actions">
                                                         <span class="level-item-name">${level.name}</span>
                                                         <form:form id="editLevelForm-${level.id}" method="POST" action="edit-level" modelAttribute="editLevelForm-${level.id}">

@@ -55,8 +55,20 @@ button.remove-button:hover {
     margin-bottom: 0px;
 }
 
-.factor-list-group-item {
+#factor-list .list-group-item {
     padding: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 0px;
+}
+
+#factor-list .list-group-item .list-group-item {
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .factor-item-header {
@@ -99,6 +111,7 @@ button.remove-button:hover {
 .factor-item > .factor-item-levels > ul {
     padding: 0px;
 }
+
 
 .level-item-name {
     font-size: medium;
