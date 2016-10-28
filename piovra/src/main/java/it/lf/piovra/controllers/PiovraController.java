@@ -1,6 +1,7 @@
 package it.lf.piovra.controllers;
 
 import com.google.gson.Gson;
+import it.lf.piovra.controllers.constants.ControllerConstants;
 import it.lf.piovra.facades.ExperimentFacade;
 import it.lf.piovra.facades.FactorFacade;
 import it.lf.piovra.facades.LevelFacade;
@@ -27,9 +28,6 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by Lfurrer on 28/04/2016.
- */
 @Controller
 @RequestMapping("/")
 public class PiovraController {
@@ -37,8 +35,6 @@ public class PiovraController {
     private static final Logger LOG = LogManager.getLogger(PiovraController.class);
 
     private static final String REDIRECT_PREFIX = "redirect:";
-    private static final String HOMEPAGE_VIEW = "index";
-    private static final String CALCULATE_RESULT_VIEW = "calculateResult";
 
     @Resource
     private SuiteFacade suiteFacade;
@@ -58,7 +54,7 @@ public class PiovraController {
     @RequestMapping(method = RequestMethod.GET)
     public String showHome(Model model) {
         addModelAttributes(model);
-        return HOMEPAGE_VIEW;
+        return ControllerConstants.Views.HOMEPAGE_VIEW;
     }
 
     protected void addModelAttributes(Model model) {
@@ -160,7 +156,7 @@ public class PiovraController {
     public String calculate(Model model) {
         SuiteData suiteData = suiteFacade.calculate();
         model.addAttribute("suite", suiteData);
-        return CALCULATE_RESULT_VIEW;
+        return ControllerConstants.Views.CALCULATE_RESULT_VIEW;
     }
 
     @RequestMapping(value = "/export-to-excel", method = RequestMethod.GET)

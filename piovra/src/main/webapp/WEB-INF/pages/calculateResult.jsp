@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="resources/css/main.css" />
     <script type="text/javascript" src="resources/js/lib/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resources/js/lib/mustache.min.js"></script>
 </head>
 <body>
 
