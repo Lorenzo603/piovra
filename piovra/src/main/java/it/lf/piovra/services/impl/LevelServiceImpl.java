@@ -6,16 +6,14 @@ import it.lf.piovra.models.Level;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.LevelService;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Required;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Lorenzo on 16/05/2016.
- */
 public class LevelServiceImpl implements LevelService {
 
+    @Resource
     private ExperimentService experimentService;
 
     @Override
@@ -55,11 +53,6 @@ public class LevelServiceImpl implements LevelService {
 
     protected String generateUniqueIdentifier() {
         return UUID.randomUUID().toString();
-    }
-
-    @Required
-    public void setExperimentService(ExperimentService experimentService) {
-        this.experimentService = experimentService;
     }
 
 }

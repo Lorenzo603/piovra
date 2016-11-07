@@ -6,16 +6,14 @@ import it.lf.piovra.models.Level;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.FactorService;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Required;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Lfurrer on 01/05/2016.
- */
 public class FactorServiceImpl implements FactorService {
 
+    @Resource
     private ExperimentService experimentService;
 
     @Override
@@ -61,8 +59,4 @@ public class FactorServiceImpl implements FactorService {
         return UUID.randomUUID().toString();
     }
 
-    @Required
-    public void setExperimentService(ExperimentService experimentService) {
-        this.experimentService = experimentService;
-    }
 }

@@ -2,73 +2,63 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
        		http://www.springframework.org/schema/beans
        		http://www.springframework.org/schema/beans/spring-beans.xsd
+       		http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
        		http://www.springframework.org/schema/mvc
        		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <import resource="spring-security.xml"/>
 
+    <context:annotation-config />
     <mvc:annotation-driven />
 
     <!-- Facades -->
     <alias name="experimentFacadeImpl" alias="experimentFacade"/>
-    <bean id="experimentFacadeImpl" class="it.lf.piovra.facades.impl.ExperimentFacadeImpl" >
-        <property name="experimentService" ref="experimentService" />
-        <property name="experimentConverter" ref="experimentConverter" />
-    </bean>
+    <bean id="experimentFacadeImpl" class="it.lf.piovra.facades.impl.ExperimentFacadeImpl" />
 
     <alias name="factorFacadeImpl" alias="factorFacade"/>
-    <bean id="factorFacadeImpl" class="it.lf.piovra.facades.impl.FactorFacadeImpl" >
-        <property name="factorService" ref="factorService" />
-        <property name="factorConverter" ref="factorConverter" />
-        <property name="experimentService" ref="experimentService" />
-    </bean>
+    <bean id="factorFacadeImpl" class="it.lf.piovra.facades.impl.FactorFacadeImpl" />
 
     <alias name="levelFacadeImpl" alias="levelFacade"/>
-    <bean id="levelFacadeImpl" class="it.lf.piovra.facades.impl.LevelFacadeImpl" >
-        <property name="factorService" ref="factorService" />
-        <property name="levelService" ref="levelService" />
-        <property name="levelConverter" ref="levelConverter" />
-    </bean>
+    <bean id="levelFacadeImpl" class="it.lf.piovra.facades.impl.LevelFacadeImpl" />
 
     <alias name="suiteFacadeImpl" alias="suiteFacadeImpl"/>
-    <bean id="suiteFacadeImpl" class="it.lf.piovra.facades.impl.SuiteFacadeImpl" >
-        <property name="suiteService" ref="suiteService" />
-        <property name="experimentService" ref="experimentService" />
-    </bean>
+    <bean id="suiteFacadeImpl" class="it.lf.piovra.facades.impl.SuiteFacadeImpl" />
 
     <bean id="gsonUtils" class="com.google.gson.Gson"/>
 
     <!-- Services -->
+    <alias name="userServiceImpl" alias="userService"/>
+    <bean id="userServiceImpl" class="it.lf.piovra.services.impl.UserServiceImpl" />
+
     <alias name="experimentServiceImpl" alias="experimentService"/>
     <bean id="experimentServiceImpl" class="it.lf.piovra.services.impl.ExperimentServiceImpl" />
 
     <alias name="factorServiceImpl" alias="factorService"/>
-    <bean id="factorServiceImpl" class="it.lf.piovra.services.impl.FactorServiceImpl" >
-        <property name="experimentService" ref="experimentService" />
-    </bean>
+    <bean id="factorServiceImpl" class="it.lf.piovra.services.impl.FactorServiceImpl" />
 
     <alias name="levelServiceImpl" alias="levelService"/>
-    <bean id="levelServiceImpl" class="it.lf.piovra.services.impl.LevelServiceImpl" >
-        <property name="experimentService" ref="experimentService" />
-    </bean>
+    <bean id="levelServiceImpl" class="it.lf.piovra.services.impl.LevelServiceImpl" />
 
     <alias name="experimentConverterImpl" alias="experimentConverter"/>
-    <bean id="experimentConverterImpl" class="it.lf.piovra.services.impl.ExperimentConverterImpl" >
-        <property name="factorConverter" ref="factorConverter" />
-    </bean>
+    <bean id="experimentConverterImpl" class="it.lf.piovra.services.impl.ExperimentConverterImpl" />
 
     <alias name="factorConverterImpl" alias="factorConverter"/>
-    <bean id="factorConverterImpl" class="it.lf.piovra.services.impl.FactorConverterImpl" >
-        <property name="levelConverter" ref="levelConverter" />
-    </bean>
+    <bean id="factorConverterImpl" class="it.lf.piovra.services.impl.FactorConverterImpl" />
 
     <alias name="levelConverterImpl" alias="levelConverter"/>
     <bean id="levelConverterImpl" class="it.lf.piovra.services.impl.LevelConverterImpl" />
 
     <alias name="suiteServiceImpl" alias="suiteService"/>
     <bean id="suiteServiceImpl" class="it.lf.piovra.services.impl.SuiteServiceImpl" />
+
+    <!-- Repository -->
+    <alias name="persistenceDaoImpl" alias="persistenceDao"/>
+    <bean id="persistenceDaoImpl" class="it.lf.piovra.persistence.services.impl.PersistenceDaoImpl" />
+
 
 </beans>

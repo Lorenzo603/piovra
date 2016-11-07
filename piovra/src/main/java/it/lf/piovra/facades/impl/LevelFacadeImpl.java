@@ -7,15 +7,16 @@ import it.lf.piovra.services.FactorService;
 import it.lf.piovra.services.LevelConverter;
 import it.lf.piovra.services.LevelService;
 import it.lf.piovra.views.LevelData;
-import org.springframework.beans.factory.annotation.Required;
 
-/**
- * Created by Lorenzo on 16/05/2016.
- */
+import javax.annotation.Resource;
+
 public class LevelFacadeImpl implements LevelFacade {
 
+    @Resource
     private FactorService factorService;
+    @Resource
     private LevelService levelService;
+    @Resource
     private LevelConverter levelConverter;
 
     @Override
@@ -36,21 +37,6 @@ public class LevelFacadeImpl implements LevelFacade {
     @Override
     public void removeLevel(String id) {
         levelService.removeLevel(id);
-    }
-
-    @Required
-    public void setFactorService(FactorService factorService) {
-        this.factorService = factorService;
-    }
-
-    @Required
-    public void setLevelService(LevelService levelService) {
-        this.levelService = levelService;
-    }
-
-    @Required
-    public void setLevelConverter(LevelConverter levelConverter) {
-        this.levelConverter = levelConverter;
     }
 
 

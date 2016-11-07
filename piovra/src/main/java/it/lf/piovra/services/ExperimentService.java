@@ -3,11 +3,11 @@ package it.lf.piovra.services;
 import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.Factor;
 import it.lf.piovra.models.Level;
+import it.lf.piovra.models.User;
 
-/**
- * Created by Lfurrer on 04/05/2016.
- */
 public interface ExperimentService {
+
+    Experiment createExperiment(User user, String name);
 
     Experiment getExperiment();
 

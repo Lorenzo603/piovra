@@ -3,9 +3,6 @@ package it.lf.piovra.models;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lfurrer on 01/05/2016.
- */
 public class Factor {
 
     private String id;

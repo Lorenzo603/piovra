@@ -6,16 +6,14 @@ import it.lf.piovra.services.FactorConverter;
 import it.lf.piovra.services.LevelConverter;
 import it.lf.piovra.views.FactorData;
 import it.lf.piovra.views.LevelData;
-import org.springframework.beans.factory.annotation.Required;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lfurrer on 01/05/2016.
- */
 public class FactorConverterImpl implements FactorConverter {
 
+    @Resource
     private LevelConverter levelConverter;
 
     @Override
@@ -36,8 +34,4 @@ public class FactorConverterImpl implements FactorConverter {
         return target;
     }
 
-    @Required
-    public void setLevelConverter(LevelConverter levelConverter) {
-        this.levelConverter = levelConverter;
-    }
 }

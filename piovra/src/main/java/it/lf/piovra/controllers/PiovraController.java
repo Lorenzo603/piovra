@@ -34,8 +34,6 @@ public class PiovraController extends AbstractController {
 
     private static final Logger LOG = LogManager.getLogger(PiovraController.class);
 
-    private static final String REDIRECT_PREFIX = "redirect:";
-
     @Resource
     private SuiteFacade suiteFacade;
 

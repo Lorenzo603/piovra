@@ -6,16 +6,15 @@ import it.lf.piovra.services.ExperimentConverter;
 import it.lf.piovra.services.FactorConverter;
 import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.FactorData;
-import org.springframework.beans.factory.annotation.Required;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lfurrer on 04/05/2016.
- */
+
 public class ExperimentConverterImpl implements ExperimentConverter {
 
+    @Resource
     private FactorConverter factorConverter;
 
     @Override
@@ -25,6 +24,7 @@ public class ExperimentConverterImpl implements ExperimentConverter {
 
     @Override
     public ExperimentData convert(Experiment source, ExperimentData target) {
+        target.setName(source.getName());
         List<FactorData> factors = new ArrayList<>();
         for (Factor factor : source.getFactors()) {
             factors.add(factorConverter.convert(factor));
@@ -33,8 +33,4 @@ public class ExperimentConverterImpl implements ExperimentConverter {
         return target;
     }
 
-    @Required
-    public void setFactorConverter(FactorConverter factorConverter) {
-        this.factorConverter = factorConverter;
-    }
 }

@@ -1,31 +1,23 @@
 package it.lf.piovra.facades.impl;
 
-import it.lf.piovra.controllers.PiovraController;
 import it.lf.piovra.facades.SuiteFacade;
-import it.lf.piovra.models.Experiment;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.SuiteService;
-import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.SuiteData;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.springframework.beans.factory.annotation.Required;
 
-import java.io.IOException;
+import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by Lfurrer on 28/04/2016.
- */
+
 public class SuiteFacadeImpl implements SuiteFacade {
 
-
+    @Resource
     private SuiteService suiteService;
-
+    @Resource
     private ExperimentService experimentService;
 
     @Override
@@ -34,16 +26,6 @@ public class SuiteFacadeImpl implements SuiteFacade {
         List<List<String>> results = suiteService.calculate(experimentService.getExperiment());
         suiteData.setCases(results);
         return suiteData;
-    }
-
-    @Required
-    public void setSuiteService(SuiteService suiteService) {
-        this.suiteService = suiteService;
-    }
-
-    @Required
-    public void setExperimentService(ExperimentService experimentService) {
-        this.experimentService = experimentService;
     }
 
     @Override
