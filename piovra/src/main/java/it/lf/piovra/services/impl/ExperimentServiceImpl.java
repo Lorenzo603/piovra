@@ -8,6 +8,8 @@ import it.lf.piovra.persistence.services.PersistenceDao;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.List;
 
 public class ExperimentServiceImpl implements ExperimentService {
 
@@ -33,6 +35,12 @@ public class ExperimentServiceImpl implements ExperimentService {
     @Override
     public Experiment getExperiment() {
         return THE_ONE;
+    }
+
+    @Override
+    public List<Experiment> getExperimentsByUser(User user) {
+        return Arrays.asList(THE_ONE);
+        // return persistenceDao.getExperimentsByUser(user);
     }
 
 

@@ -1,13 +1,17 @@
 package it.lf.piovra.facades.impl;
 
 import it.lf.piovra.facades.ExperimentFacade;
+import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.User;
 import it.lf.piovra.services.ExperimentConverter;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.UserService;
 import it.lf.piovra.views.ExperimentData;
+import org.apache.commons.collections4.ListUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ExperimentFacadeImpl implements ExperimentFacade {
@@ -29,7 +33,21 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
     }
 
     @Override
-    public ExperimentData getExperiment() {
+    public List<ExperimentData> getExperimentsByCurrentUser() {
+        User user = userService.getCurrentUser();
+        if (userService.isAnonymousUser(user)) {
+            return new ArrayList<>();
+        }
+        List<Experiment> experiments = experimentService.getExperimentsByUser(user);
+        List<ExperimentData> experimentsData = new ArrayList<>();
+        for (Experiment experiment : experiments) {
+            experimentsData.add(experimentConverter.convert(experiment));
+        }
+        return experimentsData;
+    }
+
+    @Override
+    public ExperimentData getExperimentById(String id) {
         return experimentConverter.convert(experimentService.getExperiment());
     }
 

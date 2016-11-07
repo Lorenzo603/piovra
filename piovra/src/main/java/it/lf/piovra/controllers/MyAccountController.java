@@ -4,7 +4,6 @@ import it.lf.piovra.controllers.constants.ControllerConstants;
 import it.lf.piovra.facades.ExperimentFacade;
 import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.forms.CreateExperimentForm;
-import it.lf.piovra.views.forms.LoginForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,7 @@ public class MyAccountController extends AbstractController {
     @RequestMapping(value = "/experiments", method = RequestMethod.GET)
     public String showMyAccount(Model model) {
         model.addAttribute("createExperimentForm", new CreateExperimentForm());
+        model.addAttribute("experiments", experimentFacade.getExperimentsByCurrentUser());
         return ControllerConstants.Views.EXPERIMENTS_VIEW;
     }
 

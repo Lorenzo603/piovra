@@ -3,25 +3,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<c:url value="/resources" var="siteResourceUrl"/>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Piovra</title>
 
-        <link rel="stylesheet" href="resources/css/lib/bootstrap.min.css" />
-        <link rel="stylesheet" href="resources/css/main.css" />
-        <script type="text/javascript" src="resources/js/lib/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="resources/js/lib/bootstrap.min.js"></script>
-        <script type="text/javascript" src="resources/js/lib/mustache.min.js"></script>
-        <script type="text/javascript" src="resources/js/lib/js.cookie.js"></script>
-        <script type="text/javascript" src="resources/js/experimentGridWidget.js"></script>
+        <link rel="stylesheet" href="${siteResourceUrl}/css/lib/bootstrap.min.css" />
+        <link rel="stylesheet" href="${siteResourceUrl}/css/main.css" />
+        <script type="text/javascript" src="${siteResourceUrl}/js/lib/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="${siteResourceUrl}/js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="${siteResourceUrl}/js/lib/mustache.min.js"></script>
+        <script type="text/javascript" src="${siteResourceUrl}/js/lib/js.cookie.js"></script>
+        <script type="text/javascript" src="${siteResourceUrl}/js/experimentGridWidget.js"></script>
     </head>
 
     <body>
         <div id="wrapper" class="container-fluid">
             <div class="top">
                 <a href="/piovra">
-                    <img class="piovra-logo" src="resources/img/piovra-logo.png"/>
+                    <img class="piovra-logo" src="${siteResourceUrl}/img/piovra-logo.png"/>
                 </a>
                 <h1>Piovra</h1>
                 <br class="clear">

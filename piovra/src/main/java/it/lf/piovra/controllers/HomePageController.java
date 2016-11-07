@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value= "/login")
-public class LoginPageController extends AbstractController {
+@RequestMapping("/")
+public class HomePageController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showLogin(Model model) {
-        return ControllerConstants.Views.LOGIN_VIEW;
+    public String showHome(Model model) {
+        return ControllerConstants.Views.HOMEPAGE_VIEW;
     }
 
 }

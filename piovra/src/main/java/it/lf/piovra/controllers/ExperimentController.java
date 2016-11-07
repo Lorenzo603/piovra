@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,10 +28,10 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
-public class PiovraController extends AbstractController {
+@RequestMapping("/my-account/experiment")
+public class ExperimentController extends AbstractController {
 
-    private static final Logger LOG = LogManager.getLogger(PiovraController.class);
+    private static final Logger LOG = LogManager.getLogger(ExperimentController.class);
 
     @Resource
     private SuiteFacade suiteFacade;
@@ -48,13 +49,13 @@ public class PiovraController extends AbstractController {
     private Gson gsonUtils;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showHome(Model model) {
-        addModelAttributes(model);
-        return ControllerConstants.Views.HOMEPAGE_VIEW;
+    public String showExperiment(Model model, @PathVariable String experimentId) {
+        addModelAttributes(model, experimentId);
+        return ControllerConstants.Views.EXPERIMENT_VIEW;
     }
 
-    protected void addModelAttributes(Model model) {
-        ExperimentData experimentData = experimentFacade.getExperiment();
+    protected void addModelAttributes(Model model, String experimentId) {
+        ExperimentData experimentData = experimentFacade.getExperimentById(experimentId);
         model.addAttribute("experiment", experimentData);
 
         model.addAttribute("addFactorForm", new AddFactorForm());
@@ -108,7 +109,7 @@ public class PiovraController extends AbstractController {
     @ResponseBody
     @RequestMapping(value = "/getExperiment", method = RequestMethod.GET, produces = "application/json")
     public String getExperiment() {
-        ExperimentData experimentData = experimentFacade.getExperiment();
+        ExperimentData experimentData = experimentFacade.getExperimentById("non existing id");
         return gsonUtils.toJson(experimentData);
     }
 
