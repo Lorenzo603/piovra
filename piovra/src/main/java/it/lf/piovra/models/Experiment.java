@@ -1,10 +1,13 @@
 package it.lf.piovra.models;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Experiment {
 
+    @Id
     private String id;
     private User user;
     private String name;

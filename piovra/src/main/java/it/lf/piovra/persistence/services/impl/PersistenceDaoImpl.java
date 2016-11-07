@@ -1,15 +1,9 @@
 package it.lf.piovra.persistence.services.impl;
 
-import com.mongodb.Block;
-import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoDatabase;
 import it.lf.piovra.models.Experiment;
 import it.lf.piovra.persistence.repository.ExperimentRepository;
 import it.lf.piovra.persistence.services.PersistenceDao;
-import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 
 public class PersistenceDaoImpl implements PersistenceDao {
 
@@ -18,7 +12,7 @@ public class PersistenceDaoImpl implements PersistenceDao {
 
     @Override
     public Experiment getExperimentById(String experimentId) {
-
+/*
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("piovra");
         FindIterable<Document> experiments = db.getCollection("experiments").find(new Document("id", experimentId));
@@ -29,7 +23,7 @@ public class PersistenceDaoImpl implements PersistenceDao {
             }
         });
 
-
+*/
         Experiment result = new Experiment();
         return result;
     }
