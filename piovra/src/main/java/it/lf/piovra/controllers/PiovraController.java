@@ -30,7 +30,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class PiovraController {
+public class PiovraController extends AbstractController {
 
     private static final Logger LOG = LogManager.getLogger(PiovraController.class);
 

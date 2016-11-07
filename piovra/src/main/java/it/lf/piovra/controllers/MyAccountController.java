@@ -11,7 +11,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/my-account")
-public class MyAccountController {
+public class MyAccountController extends AbstractController {
 
     @RequestMapping(value = "/experiments", method = RequestMethod.GET)
     public String showMyAccount(Model model) {

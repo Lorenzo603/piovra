@@ -1,4 +1,7 @@
 <%@tag description="Generic Page Template" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html lang="en">
     <head>
@@ -22,6 +25,25 @@
                 </a>
                 <h1>Piovra</h1>
                 <br class="clear">
+
+                <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
+                <c:choose>
+                    <c:when test="${isLogged}">
+                        <c:url var="logoutUrl" value="/logout"/>
+                        <form:form id="logoutForm" method="POST" action="${logoutUrl}">
+                            <button class="btn btn-lg btn-default" type="submit">Logout</button>
+                        </form:form>
+                    </c:when>
+                    <c:otherwise>
+                        <form:form id="loginForm" method="POST" action="my-account/doLogin" modelAttribute="loginForm">
+                            <form:input path="username" />
+                            <form:password path="password" />
+                            <button class="btn btn-lg btn-default" type="submit">Login</button>
+                        </form:form>
+                    </c:otherwise>
+                </c:choose>
+
+
             </div>
 
             <jsp:doBody/>
