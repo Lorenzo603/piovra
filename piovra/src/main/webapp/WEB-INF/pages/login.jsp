@@ -10,7 +10,8 @@
             <c:when test="${isLogged}">
             </c:when>
             <c:otherwise>
-                <form:form id="registerForm" method="POST" action="login/doRegister" modelAttribute="registerForm">
+                <c:url var="registerUrl" value="/login/doRegister"/>
+                <form:form id="registerForm" method="POST" action="${registerUrl}" modelAttribute="registerForm">
                     <form:errors path="*" cssClass="form-error" />
 
                     <form:errors path="email" cssClass="form-error" />
