@@ -21,15 +21,9 @@
     </security:http>
 
     <security:authentication-manager>
-        <!--<security:authentication-provider ref="authenticationProvider"/>-->
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="admin" password="nimda" authorities="ROLE_USER" />
-            </security:user-service>
-        </security:authentication-provider>
+        <security:authentication-provider user-service-ref="mongoUserDetailsService" />
     </security:authentication-manager>
 
-    <alias name="defaultAuthenticationProvider" alias="authenticationProvider" />
-    <bean id="defaultAuthenticationProvider" class="it.lf.piovra.security.impl.DefaultAuthenticationProvider"/>
+    <bean id="mongoUserDetailsService" class="it.lf.piovra.security.impl.MongoUserDetailsService" />
 
 </beans>

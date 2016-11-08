@@ -37,7 +37,8 @@
                         </form:form>
                     </c:when>
                     <c:otherwise>
-                        <form:form id="loginForm" method="POST" action="my-account/doLogin" modelAttribute="loginForm">
+                        <c:url var="doLoginUrl" value="/my-account/doLogin"/>
+                        <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm">
                             <form:input path="username" />
                             <form:password path="password" />
                             <button class="btn btn-lg btn-default" type="submit">Login</button>
