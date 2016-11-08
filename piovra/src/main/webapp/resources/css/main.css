@@ -6,6 +6,11 @@
 	clear: both;
 }
 
+form-error {
+    background-color: red;
+    color: black;
+}
+
 button.add-button {
     color: white;
     background-color: green;

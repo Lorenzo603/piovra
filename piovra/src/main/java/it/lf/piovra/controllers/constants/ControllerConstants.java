@@ -3,6 +3,8 @@ package it.lf.piovra.controllers.constants;
 public interface ControllerConstants {
 
     interface Controllers {
+        String LOGIN = "/login";
+        String MY_ACCOUNT = "/my-account";
         String EXPERIMENT = "/my-account/experiment";
     }
 

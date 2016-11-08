@@ -11,6 +11,10 @@ public interface PersistenceDao {
 
     List<Experiment> getExperimentsByUser(User user);
 
+    User getUserByEmail(String email);
+
     void persistExperiment(Experiment experiment);
+
+    void persistUser(User user);
 
 }

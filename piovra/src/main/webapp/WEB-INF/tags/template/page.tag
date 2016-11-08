@@ -42,6 +42,7 @@
                             <form:password path="password" />
                             <button class="btn btn-lg btn-default" type="submit">Login</button>
                         </form:form>
+                        <a href="login">Register</a>
                     </c:otherwise>
                 </c:choose>
 

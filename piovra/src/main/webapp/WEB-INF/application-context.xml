@@ -20,6 +20,9 @@
     <mvc:annotation-driven />
 
     <!-- Facades -->
+    <alias name="userFacadeImpl" alias="userFacade"/>
+    <bean id="userFacadeImpl" class="it.lf.piovra.facades.impl.UserFacadeImpl" />
+
     <alias name="experimentFacadeImpl" alias="experimentFacade"/>
     <bean id="experimentFacadeImpl" class="it.lf.piovra.facades.impl.ExperimentFacadeImpl" />
 

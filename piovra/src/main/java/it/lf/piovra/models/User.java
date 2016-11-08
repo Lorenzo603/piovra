@@ -11,6 +11,7 @@ public class User {
 
     @Id
     private String email;
+    private String encodedPassword;
     @DBRef
     private List<Experiment> experiments = new ArrayList<>();
 
@@ -20,6 +21,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEncodedPassword() {
+        return encodedPassword;
+    }
+
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public List<Experiment> getExperiments() {
@@ -33,4 +42,6 @@ public class User {
     public void removeExperiment(Experiment experiment) {
         this.experiments.remove(experiment);
     }
+
+
 }

@@ -2,14 +2,34 @@ package it.lf.piovra.services.impl;
 
 
 import it.lf.piovra.models.User;
+import it.lf.piovra.persistence.services.PersistenceDao;
 import it.lf.piovra.services.UserService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-public class UserServiceImpl  implements UserService {
+import javax.annotation.Resource;
+
+public class UserServiceImpl implements UserService {
 
     private static final String ANONYMOUS_USER_EMAIL = "anonymous";
+
+    @Resource
+    private PersistenceDao persistenceDao;
+
+    @Override
+    public User createUser(String email, String password) {
+        User user = new User();
+        user.setEmail(email);
+        user.setEncodedPassword(password);
+        persistenceDao.persistUser(user);
+        return user;
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return persistenceDao.getUserByEmail(email);
+    }
 
     @Override
     public User getCurrentUser() {
