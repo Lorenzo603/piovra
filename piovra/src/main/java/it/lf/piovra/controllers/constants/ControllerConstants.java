@@ -2,6 +2,10 @@ package it.lf.piovra.controllers.constants;
 
 public interface ControllerConstants {
 
+    interface Controllers {
+        String EXPERIMENT = "/my-account/experiment";
+    }
+
     interface Views {
         String HOMEPAGE_VIEW = "index";
         String LOGIN_VIEW = "login";

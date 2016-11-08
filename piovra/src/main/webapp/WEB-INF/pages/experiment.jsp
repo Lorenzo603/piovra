@@ -1,7 +1,10 @@
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/template"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <template:page>
 
+    <c:url value="/my-account/experiment" var="experimentContextPath"/>
 
     <div class="content">
         <div class="panel panel-default">
@@ -19,14 +22,14 @@
                                     </a>
                                     <div class="factor-item-actions">
                                         <span class="factor-item-name">${factor.name}</span>
-                                        <form:form id="editFactorForm-${factor.id}" method="POST" action="edit-factor" modelAttribute="editFactorForm-${factor.id}">
+                                        <form:form id="editFactorForm-${factor.id}" method="POST" action="${experimentContextPath}/edit-factor" modelAttribute="editFactorForm-${factor.id}">
                                             <form:hidden path="experimentId" />
                                             <form:hidden path="id" />
                                             <button class="btn btn-xs edit-button" type="submit">
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                             </button>
                                         </form:form>
-                                        <form:form id="removeFactorForm-${factor.id}" method="POST" action="remove-factor" modelAttribute="removeFactorForm-${factor.id}">
+                                        <form:form id="removeFactorForm-${factor.id}" method="POST" action="${experimentContextPath}/remove-factor" modelAttribute="removeFactorForm-${factor.id}">
                                             <form:hidden path="experimentId" />
                                             <form:hidden path="id" />
                                             <button class="btn btn-xs remove-button" type="submit">
@@ -41,7 +44,7 @@
                                             <li id="li-level-${levelLoopStatus.index}" class="list-group-item">
                                                 <div class="level-item-actions">
                                                     <span class="level-item-name">${level.name}</span>
-                                                    <form:form id="editLevelForm-${level.id}" method="POST" action="edit-level" modelAttribute="editLevelForm-${level.id}">
+                                                    <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}">
                                                         <form:hidden path="experimentId" />
                                                         <form:hidden path="factorId" />
                                                         <form:hidden path="id" />
@@ -49,7 +52,7 @@
                                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                         </button>
                                                     </form:form>
-                                                    <form:form id="removeLevelForm-${level.id}" method="POST" action="remove-level" modelAttribute="removeLevelForm-${level.id}">
+                                                    <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
                                                         <form:hidden path="experimentId" />
                                                         <form:hidden path="factorId" />
                                                         <form:hidden path="id" />
@@ -61,7 +64,7 @@
                                             </li>
                                         </c:forEach>
                                     </ul>
-                                    <form:form id="addLevelForm-${factor.id}" method="POST" action="add-level" modelAttribute="addLevelForm-${factor.id}">
+                                    <form:form id="addLevelForm-${factor.id}" method="POST" action="${experimentContextPath}/add-level" modelAttribute="addLevelForm-${factor.id}">
                                         <form:hidden path="experimentId" />
                                         <form:hidden path="factorId" />
                                         <form:input path="name" type="text" placeholder="Level name"/>
@@ -76,7 +79,7 @@
                         </li>
                     </c:forEach>
                 </ul>
-                <form:form id="addFactorForm" method="POST" action="add-factor" modelAttribute="addFactorForm">
+                <form:form id="addFactorForm" method="POST" action="${experimentContextPath}/add-factor" modelAttribute="addFactorForm">
                     <div class="factor-row add-factor-row">
                         <form:hidden path="experimentId" />
                         <form:input path="name" type="text" placeholder="Factor name"/>
@@ -90,7 +93,7 @@
             </div>
 
             <div class="panel-footer">
-                <form:form id="calculateForm" method="POST" action="calculate">
+                <form:form id="calculateForm" method="POST" action="${experimentContextPath}/calculate" modelAttribute="calculateForm">
                     <form:hidden path="experimentId" />
                     <button class="btn btn-lg btn-default" type="submit">Calculate</button>
                 </form:form>
