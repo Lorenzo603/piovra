@@ -47,8 +47,7 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
 
     @Override
     public ExperimentData getExperimentById(String id) {
-        User user = userService.getCurrentUser();
-        return experimentConverter.convert(experimentService.getExperimentById(user.getEmail() + "_" + id));
+        return experimentConverter.convert(experimentService.getExperimentById(id));
     }
 
 }
