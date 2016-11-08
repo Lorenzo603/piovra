@@ -3,14 +3,14 @@ package it.lf.piovra.services;
 import it.lf.piovra.models.Factor;
 import it.lf.piovra.models.Level;
 
-/**
- * Created by Lorenzo on 16/05/2016.
- */
+
 public interface LevelService {
 
-    Level getLevelById(String id);
+    Level createLevel(String experimentId, String factorId, String name);
 
-    Level createLevel(Factor factor, String name);
+    Level getLevelById(Factor factor, String id);
 
-    void removeLevel(String id);
+    Level updateLevel(String experimentId, String factorId, String id, String name);
+
+    void removeLevel(String experimentId, String factorId, String id);
 }

@@ -48,7 +48,7 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
 
     @Override
     public ExperimentData getExperimentById(String id) {
-        return experimentConverter.convert(experimentService.getExperiment());
+        return experimentConverter.convert(experimentService.getExperimentById(id));
     }
 
 }

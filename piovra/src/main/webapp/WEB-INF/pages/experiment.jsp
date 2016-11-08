@@ -20,12 +20,14 @@
                                     <div class="factor-item-actions">
                                         <span class="factor-item-name">${factor.name}</span>
                                         <form:form id="editFactorForm-${factor.id}" method="POST" action="edit-factor" modelAttribute="editFactorForm-${factor.id}">
+                                            <form:hidden path="experimentId" />
                                             <form:hidden path="id" />
                                             <button class="btn btn-xs edit-button" type="submit">
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                             </button>
                                         </form:form>
                                         <form:form id="removeFactorForm-${factor.id}" method="POST" action="remove-factor" modelAttribute="removeFactorForm-${factor.id}">
+                                            <form:hidden path="experimentId" />
                                             <form:hidden path="id" />
                                             <button class="btn btn-xs remove-button" type="submit">
                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -40,12 +42,16 @@
                                                 <div class="level-item-actions">
                                                     <span class="level-item-name">${level.name}</span>
                                                     <form:form id="editLevelForm-${level.id}" method="POST" action="edit-level" modelAttribute="editLevelForm-${level.id}">
+                                                        <form:hidden path="experimentId" />
+                                                        <form:hidden path="factorId" />
                                                         <form:hidden path="id" />
                                                         <button class="btn btn-xs edit-button" type="submit">
                                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                         </button>
                                                     </form:form>
                                                     <form:form id="removeLevelForm-${level.id}" method="POST" action="remove-level" modelAttribute="removeLevelForm-${level.id}">
+                                                        <form:hidden path="experimentId" />
+                                                        <form:hidden path="factorId" />
                                                         <form:hidden path="id" />
                                                         <button class="btn btn-xs remove-button" type="submit">
                                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -56,6 +62,7 @@
                                         </c:forEach>
                                     </ul>
                                     <form:form id="addLevelForm-${factor.id}" method="POST" action="add-level" modelAttribute="addLevelForm-${factor.id}">
+                                        <form:hidden path="experimentId" />
                                         <form:hidden path="factorId" />
                                         <form:input path="name" type="text" placeholder="Level name"/>
                                         <form:errors path="name" />
@@ -71,6 +78,7 @@
                 </ul>
                 <form:form id="addFactorForm" method="POST" action="add-factor" modelAttribute="addFactorForm">
                     <div class="factor-row add-factor-row">
+                        <form:hidden path="experimentId" />
                         <form:input path="name" type="text" placeholder="Factor name"/>
                         <form:errors path="name" />
                         <button class="btn btn-default add-button" type="submit">
@@ -83,6 +91,7 @@
 
             <div class="panel-footer">
                 <form:form id="calculateForm" method="POST" action="calculate">
+                    <form:hidden path="experimentId" />
                     <button class="btn btn-lg btn-default" type="submit">Calculate</button>
                 </form:form>
             </div>

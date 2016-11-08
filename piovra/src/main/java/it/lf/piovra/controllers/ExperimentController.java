@@ -48,8 +48,8 @@ public class ExperimentController extends AbstractController {
     @Resource
     private Gson gsonUtils;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String showExperiment(Model model, @PathVariable String experimentId) {
+    @RequestMapping(value = "/${experimentId}", method = RequestMethod.GET)
+    public String showExperiment(@PathVariable("experimentId") String experimentId, Model model) {
         addModelAttributes(model, experimentId);
         return ControllerConstants.Views.EXPERIMENT_VIEW;
     }
@@ -58,50 +58,63 @@ public class ExperimentController extends AbstractController {
         ExperimentData experimentData = experimentFacade.getExperimentById(experimentId);
         model.addAttribute("experiment", experimentData);
 
-        model.addAttribute("addFactorForm", new AddFactorForm());
+        AddFactorForm addFactorForm = new AddFactorForm();
+        addFactorForm.setExperimentId(experimentId);
+        model.addAttribute("addFactorForm", addFactorForm);
 
         List<FactorData> factors = experimentData.getFactors();
         for (FactorData factorData : factors) {
             String factorId = factorData.getId();
-            addEditFactorFormModelAttribute(model, factorId);
-            addRemoveFactorFormModelAttribute(model, factorId);
+            addEditFactorFormModelAttribute(model, factorId, experimentId);
+            addRemoveFactorFormModelAttribute(model, factorId, experimentId);
 
             for (LevelData levelData : factorData.getLevels()) {
                 String levelId = levelData.getId();
-                addEditLevelFormModelAttribute(model, levelId);
-                addRemoveLevelFormModelAttribute(model, levelId);
+                addEditLevelFormModelAttribute(model, levelId, factorId, experimentId );
+                addRemoveLevelFormModelAttribute(model, levelId, factorId, experimentId);
             }
 
-            addAddLevelFormModelAttribute(model, factorId);
+            addAddLevelFormModelAttribute(model, factorId, experimentId);
         }
+
+        CalculateExperimentForm calculateExperimentForm = new CalculateExperimentForm();
+        calculateExperimentForm.setExperimentId(experimentId);
+        model.addAttribute("calculateForm", calculateExperimentForm);
     }
 
-    protected void addEditFactorFormModelAttribute(Model model, String factorId) {
+    protected void addEditFactorFormModelAttribute(Model model, String factorId, String experimentId) {
         EditFactorForm editFactorForm = new EditFactorForm();
+        editFactorForm.setExperimentId(experimentId);
         editFactorForm.setId(factorId);
         model.addAttribute("editFactorForm-" + factorId, editFactorForm);
     }
 
-    protected void addRemoveFactorFormModelAttribute(Model model, String factorId) {
+    protected void addRemoveFactorFormModelAttribute(Model model, String factorId, String experimentId) {
         RemoveFactorForm removeFactorForm = new RemoveFactorForm();
+        removeFactorForm.setExperimentId(experimentId);
         removeFactorForm.setId(factorId);
         model.addAttribute("removeFactorForm-" + factorId, removeFactorForm);
     }
 
-    protected void addAddLevelFormModelAttribute(Model model, String factorId) {
+    protected void addAddLevelFormModelAttribute(Model model, String factorId, String experimentId) {
         AddLevelForm addLevelForm = new AddLevelForm();
+        addLevelForm.setExperimentId(experimentId);
         addLevelForm.setFactorId(factorId);
         model.addAttribute("addLevelForm-" + factorId, addLevelForm);
     }
 
-    protected void addEditLevelFormModelAttribute(Model model, String levelId) {
+    protected void addEditLevelFormModelAttribute(Model model, String levelId, String factorId, String experimentId) {
         EditLevelForm editLevelForm = new EditLevelForm();
+        editLevelForm.setExperimentId(experimentId);
+        editLevelForm.setFactorId(factorId);
         editLevelForm.setId(levelId);
         model.addAttribute("editLevelForm-" + levelId, editLevelForm);
     }
 
-    protected void addRemoveLevelFormModelAttribute(Model model, String levelId) {
+    protected void addRemoveLevelFormModelAttribute(Model model, String levelId, String factorId, String experimentId) {
         RemoveLevelForm removeLevelForm = new RemoveLevelForm();
+        removeLevelForm.setExperimentId(experimentId);
+        removeLevelForm.setFactorId(factorId);
         removeLevelForm.setId(levelId);
         model.addAttribute("removeLevelForm-" + levelId, removeLevelForm);
     }
@@ -115,50 +128,50 @@ public class ExperimentController extends AbstractController {
 
     @RequestMapping(value = "/add-factor", method = RequestMethod.POST, produces = "application/json")
     public String addFactor(@Valid AddFactorForm addFactorForm) {
-        factorFacade.addFactor(addFactorForm.getName());
+        factorFacade.addFactor(addFactorForm.getExperimentId(), addFactorForm.getName());
         return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/edit-factor", method = RequestMethod.POST, produces = "application/json")
     public String editFactor(@Valid EditFactorForm editFactorForm) {
-        factorFacade.editFactor(editFactorForm.getId(), editFactorForm.getNewName());
+        factorFacade.editFactor(editFactorForm.getExperimentId(), editFactorForm.getId(), editFactorForm.getNewName());
         return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/remove-factor", method = RequestMethod.POST)
     public String removeFactor(@Valid RemoveFactorForm removeFactorForm) {
-        factorFacade.removeFactor(removeFactorForm.getId());
+        factorFacade.removeFactor(removeFactorForm.getExperimentId(), removeFactorForm.getId());
         return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/add-level", method = RequestMethod.POST)
     public String addLevel(@Valid AddLevelForm addLevelForm) {
-        levelFacade.addLevel(addLevelForm.getName(), addLevelForm.getFactorId());
+        levelFacade.addLevel(addLevelForm.getExperimentId(), addLevelForm.getFactorId(), addLevelForm.getName());
         return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/edit-level", method = RequestMethod.POST)
     public String editLevel(@Valid EditLevelForm editLevelForm) {
-        levelFacade.editLevel(editLevelForm.getId(), editLevelForm.getNewName());
+        levelFacade.editLevel(editLevelForm.getExperimentId(), editLevelForm.getFactorId(), editLevelForm.getId(), editLevelForm.getNewName());
         return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/remove-level", method = RequestMethod.POST)
     public String removeLevel(@Valid RemoveLevelForm removeLevelForm) {
-        levelFacade.removeLevel(removeLevelForm.getId());
+        levelFacade.removeLevel(removeLevelForm.getExperimentId(), removeLevelForm.getFactorId(), removeLevelForm.getId());
         return REDIRECT_PREFIX + "/";
     }
 
     @RequestMapping(value = "/calculate", method = RequestMethod.POST)
-    public String calculate(Model model) {
-        SuiteData suiteData = suiteFacade.calculate();
+    public String calculate(@Valid CalculateExperimentForm calculateExperimentForm, Model model) {
+        SuiteData suiteData = suiteFacade.calculate(calculateExperimentForm.getExperimentId());
         model.addAttribute("suite", suiteData);
         return ControllerConstants.Views.CALCULATE_RESULT_VIEW;
     }
 
     @RequestMapping(value = "/export-to-excel", method = RequestMethod.GET)
-    public void exportToExcel(HttpServletResponse response) {
-        HSSFWorkbook excelFile = suiteFacade.generateExcelFile();
+    public void exportToExcel(@Valid GenerateExcelForm generateExcelForm, HttpServletResponse response) {
+        HSSFWorkbook excelFile = suiteFacade.generateExcelFile(generateExcelForm.getExperimentId());
         try {
             excelFile.write(response.getOutputStream());
             response.setHeader("Content-disposition", "attachment; filename=" + "experiment.xls");

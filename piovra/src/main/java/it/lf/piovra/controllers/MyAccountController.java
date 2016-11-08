@@ -29,7 +29,7 @@ public class MyAccountController extends AbstractController {
     @RequestMapping(value = "/create-experiment", method = RequestMethod.POST)
     public String createExperiment(@Valid CreateExperimentForm createExperimentForm) {
         ExperimentData experimentData = experimentFacade.createExperiment(createExperimentForm.getName());
-        return REDIRECT_PREFIX + "/experiments";
+        return REDIRECT_PREFIX + "/my-account/experiment/" + experimentData.getName();
     }
 
 }

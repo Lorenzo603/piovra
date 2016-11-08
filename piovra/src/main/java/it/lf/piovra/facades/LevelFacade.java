@@ -2,15 +2,12 @@ package it.lf.piovra.facades;
 
 import it.lf.piovra.views.LevelData;
 
-/**
- * Created by Lorenzo on 16/05/2016.
- */
 public interface LevelFacade {
 
-    LevelData addLevel(String name, String factorId);
+    LevelData addLevel(String experimentId, String factorId, String name);
 
-    LevelData editLevel(String id, String name);
+    LevelData editLevel(String experimentId, String factorId, String id, String name);
 
-    void removeLevel(String id);
+    void removeLevel(String experimentId, String factorId, String id);
 
 }

@@ -1,19 +1,14 @@
 package it.lf.piovra.services.impl;
 
 import it.lf.piovra.models.Experiment;
-import it.lf.piovra.models.Factor;
 import it.lf.piovra.models.User;
-import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.persistence.services.PersistenceDao;
-import org.springframework.beans.factory.annotation.Required;
+import it.lf.piovra.services.ExperimentService;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.List;
 
 public class ExperimentServiceImpl implements ExperimentService {
-
-    private Experiment THE_ONE = new Experiment();
 
     @Resource
     private PersistenceDao persistenceDao;
@@ -23,30 +18,28 @@ public class ExperimentServiceImpl implements ExperimentService {
         Experiment experiment = new Experiment();
         experiment.setName(name);
         experiment.setUser(user);
-        experiment.setId(getExperimentId(experiment));
+        experiment.setId(calculateExperimentId(experiment));
         persistenceDao.persistExperiment(experiment);
         return experiment;
     }
 
-    private String getExperimentId(Experiment experiment) {
+    private String calculateExperimentId(Experiment experiment) {
         return experiment.getUser().getEmail() + "_" + experiment.getName();
     }
 
     @Override
-    public Experiment getExperiment() {
-        return THE_ONE;
+    public Experiment getExperimentById(String id) {
+        return persistenceDao.getExperimentById(id);
     }
 
     @Override
     public List<Experiment> getExperimentsByUser(User user) {
-        return Arrays.asList(THE_ONE);
-        // return persistenceDao.getExperimentsByUser(user);
+        return persistenceDao.getExperimentsByUser(user);
     }
 
-
     @Override
-    public void addFactor(Factor factor) {
-        THE_ONE.addFactor(factor);
+    public void saveExperiment(Experiment experiment) {
+        persistenceDao.persistExperiment(experiment);
     }
 
 }

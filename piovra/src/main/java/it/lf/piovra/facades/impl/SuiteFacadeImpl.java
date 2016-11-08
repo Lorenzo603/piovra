@@ -21,16 +21,16 @@ public class SuiteFacadeImpl implements SuiteFacade {
     private ExperimentService experimentService;
 
     @Override
-    public SuiteData calculate() {
+    public SuiteData calculate(String experimentId) {
         SuiteData suiteData = new SuiteData();
-        List<List<String>> results = suiteService.calculate(experimentService.getExperiment());
+        List<List<String>> results = suiteService.calculate(experimentService.getExperimentById(experimentId));
         suiteData.setCases(results);
         return suiteData;
     }
 
     @Override
-    public HSSFWorkbook generateExcelFile() {
-        SuiteData suiteData = calculate();
+    public HSSFWorkbook generateExcelFile(String experimentId) {
+        SuiteData suiteData = calculate(experimentId);
 
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Experiment");

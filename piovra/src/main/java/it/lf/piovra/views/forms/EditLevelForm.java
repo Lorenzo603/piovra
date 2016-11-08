@@ -2,15 +2,16 @@ package it.lf.piovra.views.forms;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-/**
- * Created by Lorenzo on 20/05/2016.
- */
 public class EditLevelForm {
 
     @NotBlank
     private String id;
     @NotBlank
     private String newName;
+    @NotBlank
+    private String factorId;
+    @NotBlank
+    private String experimentId;
 
     public String getId() {
         return id;
@@ -26,5 +27,21 @@ public class EditLevelForm {
 
     public void setNewName(String newName) {
         this.newName = newName;
+    }
+
+    public String getFactorId() {
+        return factorId;
+    }
+
+    public void setFactorId(String factorId) {
+        this.factorId = factorId;
+    }
+
+    public String getExperimentId() {
+        return experimentId;
+    }
+
+    public void setExperimentId(String experimentId) {
+        this.experimentId = experimentId;
     }
 }

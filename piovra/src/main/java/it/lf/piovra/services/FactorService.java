@@ -1,20 +1,17 @@
 package it.lf.piovra.services;
 
+import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.Factor;
-import it.lf.piovra.models.Level;
 
-/**
- * Created by Lfurrer on 01/05/2016.
- */
+
 public interface FactorService {
 
-    Factor getFactorById(String id);
+    Factor createFactor(String experimentId, String name);
 
-    Factor createFactor(String name);
+    Factor getFactorById(Experiment experiment, String id);
 
-    void removeFactor(String id);
+    Factor updateFactor(String experimentId, String id, String name);
 
-    void addLevel(Level level, String factorId);
-    void addLevel(Level level, Factor factor);
+    void removeFactor(String experimentId, String id);
 
 }

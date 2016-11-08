@@ -2,7 +2,6 @@ package it.lf.piovra.services.impl;
 
 import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.Factor;
-import it.lf.piovra.models.Level;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.FactorService;
 import org.apache.commons.collections4.CollectionUtils;
@@ -17,8 +16,33 @@ public class FactorServiceImpl implements FactorService {
     private ExperimentService experimentService;
 
     @Override
-    public Factor getFactorById(String id) {
-        Experiment experiment = experimentService.getExperiment();
+    public Factor createFactor(String experimentId, String name) {
+        Experiment experiment = experimentService.getExperimentById(experimentId);
+        if (experiment == null) {
+            return null;
+        }
+        Factor factor = new Factor();
+        factor.setId(generateUniqueIdentifier());
+        factor.setName(name);
+        experiment.addFactor(factor);
+        experimentService.saveExperiment(experiment);
+        return factor;
+    }
+
+    @Override
+    public Factor updateFactor(String experimentId, String id, String name) {
+        Experiment experiment = experimentService.getExperimentById(experimentId);
+        if (experiment == null) {
+            return null;
+        }
+        Factor factor = getFactorById(experiment, id);
+        factor.setName(name);
+        experimentService.saveExperiment(experiment);
+        return factor;
+    }
+
+    @Override
+    public Factor getFactorById(Experiment experiment, String id) {
         List<Factor> factors = experiment.getFactors();
         if (CollectionUtils.isNotEmpty(factors)) {
             for (Factor factor : factors) {
@@ -27,32 +51,19 @@ public class FactorServiceImpl implements FactorService {
                 }
             }
         }
-        throw new IllegalStateException("Factor with id '" + id + "' not found.");
+        return null;
     }
 
     @Override
-    public Factor createFactor(String name) {
-        Factor factor = new Factor();
-        factor.setId(generateUniqueIdentifier());
-        factor.setName(name);
-        return factor;
-    }
-
-    @Override
-    public void removeFactor(String id) {
-        Factor factorToRemove = getFactorById(id);
+    public void removeFactor(String experimentId, String id) {
+        Experiment experiment = experimentService.getExperimentById(experimentId);
+        if (experiment == null) {
+            return;
+        }
+        Factor factorToRemove = getFactorById(experiment, id);
         factorToRemove.clearLevels();
-        experimentService.getExperiment().removeFactor(factorToRemove);
-    }
-
-    @Override
-    public void addLevel(Level level, String factorId) {
-        addLevel(level, getFactorById(factorId));
-    }
-
-    @Override
-    public void addLevel(Level level, Factor factor) {
-        factor.addLevel(level);
+        experiment.removeFactor(factorToRemove);
+        experimentService.saveExperiment(experiment);
     }
 
     protected String generateUniqueIdentifier() {
