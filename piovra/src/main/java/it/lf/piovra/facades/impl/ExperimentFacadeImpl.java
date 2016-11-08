@@ -7,7 +7,6 @@ import it.lf.piovra.services.ExperimentConverter;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.UserService;
 import it.lf.piovra.views.ExperimentData;
-import org.apache.commons.collections4.ListUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -48,7 +47,8 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
 
     @Override
     public ExperimentData getExperimentById(String id) {
-        return experimentConverter.convert(experimentService.getExperimentById(id));
+        User user = userService.getCurrentUser();
+        return experimentConverter.convert(experimentService.getExperimentById(user.getEmail() + "_" + id));
     }
 
 }

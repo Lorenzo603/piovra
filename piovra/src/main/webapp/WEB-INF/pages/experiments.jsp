@@ -9,7 +9,7 @@
         <c:if test="${not empty experiments}">
             <ul>
                 <c:forEach var="experiment" items="${experiments}" varStatus="levelLoopStatus">
-                    <li>${experiment.name}</li>
+                    <li><a href="experiment/${experiment.name}">${experiment.name}</a></li>
                 </c:forEach>
             </ul>
         </c:if>
