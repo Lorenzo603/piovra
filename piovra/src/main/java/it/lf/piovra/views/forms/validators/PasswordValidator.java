@@ -2,10 +2,12 @@ package it.lf.piovra.views.forms.validators;
 
 
 import it.lf.piovra.views.forms.RegisterForm;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+@Component
 public class PasswordValidator implements Validator {
 
     @Override
