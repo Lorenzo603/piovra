@@ -23,36 +23,40 @@
         <c:url var="homepageUrl" value="/"/>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <div class="navbar-brand auto-height">
-                        <a href="${homepageUrl}"><img src="${siteResourceUrl}/img/piovra-logo.png"/></a>
-                        <span>Piovra</span>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="navbar-left brand">
+                            <a class="" href="${homepageUrl}"><img src="${siteResourceUrl}/img/piovra-logo.png"/></a>
+                            Piovra
+                        </div>
                     </div>
-                </div>
-                <div class="navbar-right">
-                    <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
-                    <c:choose>
-                        <c:when test="${isLogged}">
-                            <c:url var="logoutUrl" value="/logout"/>
-                            <form:form id="logoutForm" method="POST" action="${logoutUrl}">
-                                <button class="btn btn-lg btn-default" type="submit">Logout</button>
-                            </form:form>
-                        </c:when>
-                        <c:otherwise>
-                                <a class="btn btn-lg btn-default purple" href="login">Register</a>
-                                <c:url var="doLoginUrl" value="/my-account/doLogin"/>
-                                <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm" class="navbar-form">
-                                    <div class="form-group">
-                                        <form:input path="username" />
-                                    </div>
-                                    <div class="form-group">
-                                        <form:password path="password" />
-                                    </div>
-                                    <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
-                                </form:form>
+                    <div class="col-md-8">
+                        <div class="navbar-right">
+                            <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
+                            <c:choose>
+                                <c:when test="${isLogged}">
+                                    <c:url var="logoutUrl" value="/logout"/>
+                                    <form:form id="logoutForm" method="POST" action="${logoutUrl}">
+                                        <button class="btn btn-lg btn-default" type="submit">Logout</button>
+                                    </form:form>
+                                </c:when>
+                                <c:otherwise>
+                                        <a class="btn btn-lg btn-default purple" href="login">Register</a>
+                                        <c:url var="doLoginUrl" value="/my-account/doLogin"/>
+                                        <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm" class="navbar-form">
+                                            <div class="form-group">
+                                                <form:input path="username" />
+                                            </div>
+                                            <div class="form-group">
+                                                <form:password path="password" />
+                                            </div>
+                                            <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
+                                        </form:form>
 
-                        </c:otherwise>
-                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -61,8 +65,8 @@
             <jsp:doBody/>
         </div>
 
-        <footer>
-            <div class="container-fluid">
+        <footer class="footer">
+            <div class="container">
                 <div class="by"><span>By Lorenzo603</span></div>
             </div>
         </footer>
