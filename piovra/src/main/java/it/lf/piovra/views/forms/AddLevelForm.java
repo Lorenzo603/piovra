@@ -9,8 +9,6 @@ public class AddLevelForm {
     private String name;
     @NotBlank
     private String factorId;
-    @NotBlank
-    private String experimentId;
 
     public String getName() {
         return name;
@@ -28,11 +26,4 @@ public class AddLevelForm {
         this.factorId = factorId;
     }
 
-    public String getExperimentId() {
-        return experimentId;
-    }
-
-    public void setExperimentId(String experimentId) {
-        this.experimentId = experimentId;
-    }
 }

@@ -10,8 +10,6 @@ public class EditLevelForm {
     private String newName;
     @NotBlank
     private String factorId;
-    @NotBlank
-    private String experimentId;
 
     public String getId() {
         return id;
@@ -37,11 +35,4 @@ public class EditLevelForm {
         this.factorId = factorId;
     }
 
-    public String getExperimentId() {
-        return experimentId;
-    }
-
-    public void setExperimentId(String experimentId) {
-        this.experimentId = experimentId;
-    }
 }

@@ -5,19 +5,9 @@ import org.hibernate.validator.constraints.NotBlank;
 public class EditFactorForm {
 
     @NotBlank
-    private String experimentId;
-    @NotBlank
     private String id;
     @NotBlank
     private String newName;
-
-    public String getExperimentId() {
-        return experimentId;
-    }
-
-    public void setExperimentId(String experimentId) {
-        this.experimentId = experimentId;
-    }
 
     public String getId() {
         return id;
