@@ -1,0 +1,25 @@
+package it.lf.piovra.views.forms.validators;
+
+
+import it.lf.piovra.views.forms.RegisterForm;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+public class PasswordValidator implements Validator {
+
+    @Override
+    public boolean supports(Class<?> aClass) {
+        return RegisterForm.class.equals(aClass);
+    }
+
+    @Override
+    public void validate(Object o, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "general.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "general.required");
+        RegisterForm registerForm = (RegisterForm) o;
+        if (!registerForm.getPassword().equals(registerForm.getConfirmPassword())) {
+            errors.rejectValue("confirmPassword", "register.confirmPassword.different");
+        }
+    }
+}

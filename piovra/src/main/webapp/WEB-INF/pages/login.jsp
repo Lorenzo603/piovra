@@ -17,7 +17,11 @@
                     <form:errors path="email" class="form-error" />
                     <form:input path="email" />
 
+                    <form:errors path="password" class="form-error" />
                     <form:password path="password" />
+                    <form:errors path="confirmPassword" class="form-error" />
+                    <form:password path="confirmPassword" />
+
                     <button class="btn btn-lg btn-default" type="submit">Register</button>
                 </form:form>
             </c:otherwise>

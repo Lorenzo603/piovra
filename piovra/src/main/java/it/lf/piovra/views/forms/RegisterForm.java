@@ -2,17 +2,17 @@ package it.lf.piovra.views.forms;
 
 
 import org.hibernate.validator.constraints.Email;
-
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 
 public class RegisterForm {
 
-    @NotNull(message = "{general.required}")
+    @NotBlank(message = "{general.required}")
     @Email
     private String email;
-    @NotNull(message = "{general.required}")
+    @NotBlank(message = "{general.required}")
     private String password;
-
+    @NotBlank
+    private String confirmPassword;
 
     public String getEmail() {
         return email;
@@ -28,5 +28,13 @@ public class RegisterForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
