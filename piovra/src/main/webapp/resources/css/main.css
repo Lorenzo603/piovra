@@ -6,9 +6,55 @@
 	clear: both;
 }
 
+#logo {
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#logo h1 {
+    display: inline-block;
+    vertical-align: middle;
+    color: black;
+}
+
+.top-right {
+    float: right;
+}
+
+.top-right form {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.top-right a {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 form-error {
     background-color: red;
     color: black;
+}
+
+.btn.purple {
+    background-color: darkviolet;
+    color: white;
+}
+
+.btn.purple:hover {
+    background-color: white;
+    color: darkviolet;
+}
+
+.btn.purple-empty {
+    background-color: white;
+    color: darkviolet;
+}
+
+.btn.purple-empty:hover {
+    background-color: darkviolet;
+    color: white;
 }
 
 button.add-button {

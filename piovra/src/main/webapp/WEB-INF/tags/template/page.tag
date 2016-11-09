@@ -20,14 +20,15 @@
     </head>
 
     <body>
-        <div id="wrapper" class="container-fluid">
-            <div class="top">
-                <a href="/piovra">
-                    <img class="piovra-logo" src="${siteResourceUrl}/img/piovra-logo.png"/>
-                </a>
-                <h1>Piovra</h1>
-                <br class="clear">
-
+        <c:url var="homepageUrl" value="/"/>
+        <header>
+            <div class="container-fluid">
+                <div id="logo">
+                    <a href="${homepageUrl}">
+                        <img class="piovra-logo" src="${siteResourceUrl}/img/piovra-logo.png"/>
+                        <h1>Piovra</h1>
+                    </a>
+                </div>
                 <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
                 <c:choose>
                     <c:when test="${isLogged}">
@@ -37,24 +38,31 @@
                         </form:form>
                     </c:when>
                     <c:otherwise>
-                        <c:url var="doLoginUrl" value="/my-account/doLogin"/>
-                        <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm">
-                            <form:input path="username" />
-                            <form:password path="password" />
-                            <button class="btn btn-lg btn-default" type="submit">Login</button>
-                        </form:form>
-                        <a href="login">Register</a>
+                        <div class="top-right">
+                            <a class="btn btn-default purple" href="login">Register</a>
+                            <c:url var="doLoginUrl" value="/my-account/doLogin"/>
+                            <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm">
+                                <form:input path="username" />
+                                <form:password path="password" />
+                                <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
+                            </form:form>
+                        </div>
                     </c:otherwise>
                 </c:choose>
-
-
             </div>
+        </header>
 
+        <div class="container-fluid">
             <jsp:doBody/>
-
-            <div class="footer">Lorenzo603 &copy;2016</div>
-            <div id="debug"></div>
         </div>
+
+        <footer>
+            <div class="container-fluid">
+                <span>Lorenzo603 &copy;2016</span>
+                <div id="debug"></div>
+            </div>
+        </footer>
+
     </body>
 
 </html>

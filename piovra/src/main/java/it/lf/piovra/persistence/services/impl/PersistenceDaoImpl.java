@@ -24,9 +24,7 @@ public class PersistenceDaoImpl implements PersistenceDao {
 
     @Override
     public List<Experiment> getExperimentsByUser(User user) {
-        Experiment experimentExample = new Experiment();
-        experimentExample.setUser(user);
-        return experimentRepository.findAll(Example.of(experimentExample));
+        return experimentRepository.findByUser(user);
     }
 
     @Override
