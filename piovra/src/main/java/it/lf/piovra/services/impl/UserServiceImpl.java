@@ -7,6 +7,7 @@ import it.lf.piovra.services.UserService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.annotation.Resource;
 
@@ -16,12 +17,14 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private PersistenceDao persistenceDao;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User createUser(String email, String password) {
         User user = new User();
         user.setEmail(email);
-        user.setEncodedPassword(password);
+        user.setEncodedPassword(passwordEncoder.encode(password));
         persistenceDao.persistUser(user);
         return user;
     }

@@ -21,9 +21,12 @@
     </security:http>
 
     <security:authentication-manager>
-        <security:authentication-provider user-service-ref="mongoUserDetailsService" />
+        <security:authentication-provider user-service-ref="mongoUserDetailsService" >
+            <security:password-encoder ref="passwordEncoder" />
+        </security:authentication-provider>
     </security:authentication-manager>
 
     <bean id="mongoUserDetailsService" class="it.lf.piovra.security.impl.MongoUserDetailsService" />
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 </beans>

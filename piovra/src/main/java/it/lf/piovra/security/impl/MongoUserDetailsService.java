@@ -21,6 +21,8 @@ public class MongoUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        return new MongoUserDetails(user, Arrays.asList(new SimpleGrantedAuthority( "ROLE_USER")));
+        return new MongoUserDetails(user, Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
     }
+
+
 }
