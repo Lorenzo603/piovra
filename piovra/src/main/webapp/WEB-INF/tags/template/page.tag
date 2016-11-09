@@ -21,36 +21,41 @@
 
     <body>
         <c:url var="homepageUrl" value="/"/>
-        <header>
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div id="logo">
-                    <a href="${homepageUrl}">
-                        <img class="piovra-logo" src="${siteResourceUrl}/img/piovra-logo.png"/>
-                        <h1>Piovra</h1>
-                    </a>
+                <div class="navbar-header">
+                    <div class="navbar-brand auto-height">
+                        <a href="${homepageUrl}"><img src="${siteResourceUrl}/img/piovra-logo.png"/></a>
+                        <span>Piovra</span>
+                    </div>
                 </div>
-                <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
-                <c:choose>
-                    <c:when test="${isLogged}">
-                        <c:url var="logoutUrl" value="/logout"/>
-                        <form:form id="logoutForm" method="POST" action="${logoutUrl}">
-                            <button class="btn btn-lg btn-default" type="submit">Logout</button>
-                        </form:form>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="top-right">
-                            <a class="btn btn-default purple" href="login">Register</a>
-                            <c:url var="doLoginUrl" value="/my-account/doLogin"/>
-                            <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm">
-                                <form:input path="username" />
-                                <form:password path="password" />
-                                <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
+                <div class="navbar-right">
+                    <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
+                    <c:choose>
+                        <c:when test="${isLogged}">
+                            <c:url var="logoutUrl" value="/logout"/>
+                            <form:form id="logoutForm" method="POST" action="${logoutUrl}">
+                                <button class="btn btn-lg btn-default" type="submit">Logout</button>
                             </form:form>
-                        </div>
-                    </c:otherwise>
-                </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                                <a class="btn btn-lg btn-default purple" href="login">Register</a>
+                                <c:url var="doLoginUrl" value="/my-account/doLogin"/>
+                                <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm" class="navbar-form">
+                                    <div class="form-group">
+                                        <form:input path="username" />
+                                    </div>
+                                    <div class="form-group">
+                                        <form:password path="password" />
+                                    </div>
+                                    <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
+                                </form:form>
+
+                        </c:otherwise>
+                    </c:choose>
+                </div>
             </div>
-        </header>
+        </nav>
 
         <div class="container-fluid">
             <jsp:doBody/>
@@ -58,8 +63,7 @@
 
         <footer>
             <div class="container-fluid">
-                <span>Lorenzo603 &copy;2016</span>
-                <div id="debug"></div>
+                <div class="by"><span>By Lorenzo603</span></div>
             </div>
         </footer>
 

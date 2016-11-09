@@ -6,30 +6,22 @@
 	clear: both;
 }
 
-#logo {
-    padding: 5px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#logo h1 {
-    display: inline-block;
-    vertical-align: middle;
-    color: black;
-}
-
-.top-right {
+.by {
     float: right;
+    background-color: darkviolet;
+    color: white;
 }
 
-.top-right form {
-    display: inline-block;
-    vertical-align: middle;
+.navbar-brand.auto-height {
+    height: auto;
 }
 
-.top-right a {
+.navbar-brand span {
+    font-size: xx-large;
+}
+
+#loginForm {
     display: inline-block;
-    vertical-align: middle;
 }
 
 form-error {
