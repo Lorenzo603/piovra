@@ -36,7 +36,7 @@
                             <c:choose>
                                 <c:when test="${isLogged}">
                                     <c:url var="logoutUrl" value="/logout"/>
-                                    <form:form id="logoutForm" method="POST" action="${logoutUrl}">
+                                    <form:form id="logoutForm" method="POST" action="${logoutUrl}" class="navbar-form">
                                         <button class="btn btn-lg btn-default" type="submit">Logout</button>
                                     </form:form>
                                 </c:when>

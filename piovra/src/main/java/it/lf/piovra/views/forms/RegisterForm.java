@@ -6,12 +6,12 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class RegisterForm {
 
-    @NotBlank(message = "{general.required}")
-    @Email
+    @Email(message = "{Email.registerForm.email}")
+    @NotBlank(message = "{NotBlank.registerForm.email}")
     private String email;
-    @NotBlank(message = "{general.required}")
+    @NotBlank(message = "{NotBlank.registerForm.password}")
     private String password;
-    @NotBlank
+    @NotBlank(message = "{NotBlank.registerForm.confirmPassword}")
     private String confirmPassword;
 
     public String getEmail() {

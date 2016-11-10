@@ -27,7 +27,7 @@
                                 <form:errors path="password" class="form-error" />
                             </div>
                             <div class="form-group">
-                                <label for="confirmPassword">Confirm    Password</label>
+                                <label for="confirmPassword">Confirm Password</label>
                                 <form:password path="confirmPassword" placeholder="Confirm Password" class="form-control"/>
                                 <form:errors path="confirmPassword" class="form-error" />
                             </div>

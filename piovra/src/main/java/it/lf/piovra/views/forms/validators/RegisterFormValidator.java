@@ -8,7 +8,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
-public class PasswordValidator implements Validator {
+public class RegisterFormValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -17,8 +17,8 @@ public class PasswordValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "general.required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "general.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotBlank.registerForm.password");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "NotBlank.registerForm.confirmPassword");
         RegisterForm registerForm = (RegisterForm) o;
         if (!registerForm.getPassword().equals(registerForm.getConfirmPassword())) {
             errors.rejectValue("confirmPassword", "register.confirmPassword.different");

@@ -1,13 +1,13 @@
 package it.lf.piovra.views.forms;
 
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 
 
 public class LoginForm {
 
-    @NotNull(message = "{general.required}")
+    @NotBlank(message = "{NotBlank.loginForm.username}")
     private String username;
-    @NotNull(message = "{general.required}")
+    @NotBlank(message = "{NotBlank.loginForm.password}")
     private String password;
 
     public String getUsername() {
