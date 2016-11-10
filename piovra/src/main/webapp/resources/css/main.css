@@ -28,9 +28,8 @@
     display: inline-block;
 }
 
-form-error {
-    background-color: red;
-    color: black;
+.form-error {
+    color: red;
 }
 
 .btn.purple {
