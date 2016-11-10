@@ -17,8 +17,6 @@ public class RegisterFormValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotBlank.registerForm.password");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "NotBlank.registerForm.confirmPassword");
         RegisterForm registerForm = (RegisterForm) o;
         if (!registerForm.getPassword().equals(registerForm.getConfirmPassword())) {
             errors.rejectValue("confirmPassword", "register.confirmPassword.different");
