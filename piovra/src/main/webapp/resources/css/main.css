@@ -165,18 +165,18 @@ button.remove-button:hover {
     padding: 0px;
 }
 
-
-.level-item-name {
-    font-size: medium;
-}
-
-.level-item-actions {
+.level-item {
     display: flex;
     align-items: center;
 }
 
 .level-item-actions > form {
+    float: left;
     margin: 0px;
+}
+
+.level-item-name {
+    font-size: medium;
 }
 
 .factor-item-levels {

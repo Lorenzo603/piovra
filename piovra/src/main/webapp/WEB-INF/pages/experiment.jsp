@@ -49,22 +49,24 @@
                                     <ul>
                                         <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
                                             <li id="li-level-${levelLoopStatus.index}" class="list-group-item">
-                                                <div class="level-item-actions">
+                                                <div class="level-item">
                                                     <span class="level-item-name">${level.name}</span>
-                                                    <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}">
-                                                        <form:hidden path="factorId" />
-                                                        <form:hidden path="id" />
-                                                        <button class="btn btn-xs edit-button" type="submit">
-                                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                    </form:form>
-                                                    <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
-                                                        <form:hidden path="factorId" />
-                                                        <form:hidden path="id" />
-                                                        <button class="btn btn-xs remove-button" type="submit">
-                                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                        </button>
-                                                    </form:form>
+                                                    <div class="level-item-actions hidden">
+                                                        <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}">
+                                                            <form:hidden path="factorId" />
+                                                            <form:hidden path="id" />
+                                                            <button class="btn btn-xs edit-button" type="submit">
+                                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                            </button>
+                                                        </form:form>
+                                                        <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
+                                                            <form:hidden path="factorId" />
+                                                            <form:hidden path="id" />
+                                                            <button class="btn btn-xs remove-button" type="submit">
+                                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                            </button>
+                                                        </form:form>
+                                                    </div>
                                                 </div>
                                             </li>
                                         </c:forEach>

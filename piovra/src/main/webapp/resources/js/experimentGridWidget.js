@@ -23,6 +23,16 @@ var ExperimentGridWidget = {
         $('.factor-item-levels').on('shown.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
         $('.factor-item-levels').on('hidden.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
 
+        $('.factor-item-levels li').mouseenter(function() {
+            var levelItemActions = $(this).find(".level-item-actions");
+            levelItemActions.fadeIn("slow");
+            levelItemActions.removeClass("hidden");
+        }).mouseleave(function() {
+            var levelItemActions = $(this).find(".level-item-actions");
+            levelItemActions.fadeOut("slow");
+            levelItemActions.addClass("hidden");
+        });
+
         $('.edit-factor-button').click(
             function(e) {
                 e.preventDefault();
