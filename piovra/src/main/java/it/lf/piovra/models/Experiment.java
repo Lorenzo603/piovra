@@ -15,6 +15,7 @@ public class Experiment {
     @DBRef
     private User user;
     private String name;
+    private String timeCreated;
 
     public String getId() {
         return id;
@@ -59,4 +60,11 @@ public class Experiment {
     }
 
 
+    public String getTimeCreated() {
+        return timeCreated;
+    }
+
+    public void setTimeCreated(String timeCreated) {
+        this.timeCreated = timeCreated;
+    }
 }

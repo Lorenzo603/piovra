@@ -6,6 +6,7 @@ import java.util.List;
 public class ExperimentData {
 
     private String name;
+    private String timeCreated;
 
     public String getName() {
         return name;
@@ -13,6 +14,14 @@ public class ExperimentData {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTimeCreated() {
+        return timeCreated;
+    }
+
+    public void setTimeCreated(String timeCreated) {
+        this.timeCreated = timeCreated;
     }
 
     private List<FactorData> factors = new ArrayList<>();
@@ -28,6 +37,7 @@ public class ExperimentData {
     public void addFactor(FactorData factor) {
         this.factors.add(factor);
     }
+
 
 
 }

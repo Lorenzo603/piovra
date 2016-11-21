@@ -1,6 +1,7 @@
 package it.lf.piovra.facades.impl;
 
 import it.lf.piovra.facades.SuiteFacade;
+import it.lf.piovra.models.Experiment;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.SuiteService;
 import it.lf.piovra.views.SuiteData;
@@ -10,7 +11,9 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class SuiteFacadeImpl implements SuiteFacade {
@@ -23,7 +26,10 @@ public class SuiteFacadeImpl implements SuiteFacade {
     @Override
     public SuiteData calculate(String experimentId) {
         SuiteData suiteData = new SuiteData();
-        List<List<String>> results = suiteService.calculate(experimentService.getExperimentById(experimentId));
+        suiteData.setExperimentId(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId);
+        suiteData.setFactorNames(experiment.getFactors().stream().map(factor -> factor.getName()).collect(Collectors.toList()));
+        List<List<String>> results = suiteService.calculate(experiment);
         suiteData.setCases(results);
         return suiteData;
     }

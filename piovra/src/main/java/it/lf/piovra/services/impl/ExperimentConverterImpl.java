@@ -30,6 +30,7 @@ public class ExperimentConverterImpl implements ExperimentConverter {
             factors.add(factorConverter.convert(factor));
         }
         target.setFactors(factors);
+        target.setTimeCreated(source.getTimeCreated());
         return target;
     }
 

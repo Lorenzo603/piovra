@@ -14,7 +14,9 @@
                             <li class="list-group-item">
                                 <span class="lead">
                                     <a href="experiment/${experiment.name}">${experiment.name}</a>
-                                    <small>Date created: 27/11/2016</small>
+                                    <c:if test="${not empty experiment.timeCreated}">
+                                        <span class="small-font">Date created: ${experiment.timeCreated}</span>
+                                    </c:if>
                                 </span>
                             </li>
                         </c:forEach>

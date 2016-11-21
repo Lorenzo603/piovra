@@ -22,6 +22,13 @@
             </a>
         </div>
         <table class="table table-striped table-bordered">
+            <tr>
+                <th></th>
+                <th></th>
+                <c:forEach var="factorName" items="${suite.factorNames}">
+                    <th>${factorName}</th>
+                </c:forEach>
+            </tr>
             <c:forEach var="caseList" items="${suite.cases}" varStatus="status">
                 <tr id="tr-case-${status.index}">
                     <th class="fit">

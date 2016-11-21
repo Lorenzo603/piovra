@@ -23,6 +23,10 @@
     float: right;
 }
 
+.small-font {
+    font-size: 60%;
+}
+
 #loginForm {
     display: inline-block;
 }

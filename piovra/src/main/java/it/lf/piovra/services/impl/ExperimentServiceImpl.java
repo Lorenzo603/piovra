@@ -5,6 +5,8 @@ import it.lf.piovra.models.User;
 import it.lf.piovra.persistence.services.PersistenceDao;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.UserService;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +21,7 @@ public class ExperimentServiceImpl implements ExperimentService {
     @Override
     public Experiment createExperiment(User user, String name) {
         Experiment experiment = new Experiment();
+        experiment.setTimeCreated(DateTime.now().toString(DateTimeFormat.forPattern("dd/MM/yyyy HH:mm")));
         experiment.setName(name);
         experiment.setUser(user);
         experiment.setId(calculateExperimentId(user, name));
