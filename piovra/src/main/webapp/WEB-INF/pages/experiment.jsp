@@ -4,6 +4,15 @@
 
 <template:page>
 
+
+    <div class="breadcrumbs">
+        <c:url value="/my-account/experiments" var="experimentsUrl"/>
+        <a href="${experimentsUrl}">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            Back to experiments list
+        </a>
+    </div>
+
     <c:url value="/my-account/experiment/${experiment.name}" var="experimentContextPath"/>
 
     <div class="content">

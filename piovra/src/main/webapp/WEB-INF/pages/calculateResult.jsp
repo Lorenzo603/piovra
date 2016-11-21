@@ -3,6 +3,14 @@
 
 <template:page>
 
+    <div class="breadcrumbs">
+        <c:url value="/my-account/experiment/${suite.experimentId}" var="experimentUrl"/>
+        <a href="${experimentUrl}">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            Back to experiment page
+        </a>
+    </div>
+
     <div class="content">
         <h1>List of cases:</h1>
         <div class="export-actions">

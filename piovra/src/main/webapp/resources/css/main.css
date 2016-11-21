@@ -13,7 +13,6 @@
 }
 
 .footer {
-    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: darkviolet;
@@ -30,6 +29,10 @@
 
 .form-error {
     color: red;
+}
+
+.breadcrumbs {
+    margin-bottom: 40px;
 }
 
 .btn.purple {
