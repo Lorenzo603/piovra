@@ -143,13 +143,14 @@ button.remove-button:hover {
     font-size: large;
 }
 
-.factor-item-actions {
+.factor-item-title {
     display: flex;
     align-items: center;
     padding-left: 5px;
 }
 
 .factor-item-actions > form {
+    float: left;
     margin: 0px;
 }
 

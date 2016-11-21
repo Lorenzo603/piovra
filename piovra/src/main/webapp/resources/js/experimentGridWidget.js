@@ -23,13 +23,23 @@ var ExperimentGridWidget = {
         $('.factor-item-levels').on('shown.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
         $('.factor-item-levels').on('hidden.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
 
+        $('.factor-item-header').mouseenter(function() {
+            var factorItemActions = $(this).find(".factor-item-actions");
+            factorItemActions.fadeIn("fast");
+            factorItemActions.removeClass("hidden");
+        }).mouseleave(function() {
+            var factorItemActions = $(this).find(".factor-item-actions");
+            factorItemActions.fadeOut("fast");
+            factorItemActions.addClass("hidden");
+        });
+
         $('.factor-item-levels li').mouseenter(function() {
             var levelItemActions = $(this).find(".level-item-actions");
-            levelItemActions.fadeIn("slow");
+            levelItemActions.fadeIn("fast");
             levelItemActions.removeClass("hidden");
         }).mouseleave(function() {
             var levelItemActions = $(this).find(".level-item-actions");
-            levelItemActions.fadeOut("slow");
+            levelItemActions.fadeOut("fast");
             levelItemActions.addClass("hidden");
         });
 
