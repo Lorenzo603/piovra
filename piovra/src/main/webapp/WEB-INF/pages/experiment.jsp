@@ -55,18 +55,18 @@
                                                     <div class="level-item">
                                                         <span class="level-item-name">${level.name}</span>
                                                         <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}" class="form-group">
-                                                                <form:hidden path="factorId" />
-                                                                <form:hidden path="id" />
-                                                                <div class="input-group input-group-sm hidden">
-                                                                    <form:input path="newName" type="text" value="${level.name}" class="form-control"/>
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn btn-success" type="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                                                                    </span>
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                                                    </span>
-                                                                </div>
-                                                            </form:form>
+                                                            <form:hidden path="factorId" />
+                                                            <form:hidden path="id" />
+                                                            <div class="input-group input-group-sm hidden">
+                                                                <form:input path="newName" type="text" value="${level.name}" class="form-control"/>
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                                                                </span>
+                                                                <span class="input-group-btn cancel-action">
+                                                                    <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                                </span>
+                                                            </div>
+                                                        </form:form>
                                                         <div class="level-item-actions hidden">
                                                             <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
                                                                 <form:hidden path="factorId" />

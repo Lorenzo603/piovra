@@ -45,12 +45,13 @@ var ExperimentGridWidget = {
 
         $('.level-item-name').click(
             function() {
-              $(this).addClass("hidden").siblings("form").children(".input-group").removeClass("hidden");
+              $(this).addClass("hidden").siblings("form").children(".input-group").removeClass("hidden").children("input").val($(this).text());
             }
         );
-        $('.level-item form .input-group').click(
+
+        $('.level-item form .cancel-action').click(
             function() {
-              $(this).addClass("hidden").parent().siblings("span").removeClass("hidden");
+              $(this).parent().addClass("hidden").parent().siblings("span").removeClass("hidden");
             }
         );
 
