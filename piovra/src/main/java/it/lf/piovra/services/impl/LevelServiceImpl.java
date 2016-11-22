@@ -56,7 +56,7 @@ public class LevelServiceImpl implements LevelService {
         if (experiment == null) {
             return null;
         }
-        Factor factor = factorService.getFactorById(experiment, id);
+        Factor factor = factorService.getFactorById(experiment, factorId);
         if (factor == null) {
             return null;
         }

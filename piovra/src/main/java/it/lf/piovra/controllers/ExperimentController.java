@@ -64,46 +64,46 @@ public class ExperimentController extends AbstractController {
         List<FactorData> factors = experimentData.getFactors();
         for (FactorData factorData : factors) {
             String factorId = factorData.getId();
-            addEditFactorFormModelAttribute(model, factorId, experimentId);
-            addRemoveFactorFormModelAttribute(model, factorId, experimentId);
+            addEditFactorFormModelAttribute(model, factorId);
+            addRemoveFactorFormModelAttribute(model, factorId);
 
             for (LevelData levelData : factorData.getLevels()) {
                 String levelId = levelData.getId();
-                addEditLevelFormModelAttribute(model, levelId, factorId, experimentId );
-                addRemoveLevelFormModelAttribute(model, levelId, factorId, experimentId);
+                addEditLevelFormModelAttribute(model, levelId, factorId);
+                addRemoveLevelFormModelAttribute(model, levelId, factorId);
             }
 
-            addAddLevelFormModelAttribute(model, factorId, experimentId);
+            addAddLevelFormModelAttribute(model, factorId);
         }
 
     }
 
-    protected void addEditFactorFormModelAttribute(Model model, String factorId, String experimentId) {
+    protected void addEditFactorFormModelAttribute(Model model, String factorId) {
         EditFactorForm editFactorForm = new EditFactorForm();
         editFactorForm.setId(factorId);
         model.addAttribute("editFactorForm-" + factorId, editFactorForm);
     }
 
-    protected void addRemoveFactorFormModelAttribute(Model model, String factorId, String experimentId) {
+    protected void addRemoveFactorFormModelAttribute(Model model, String factorId) {
         RemoveFactorForm removeFactorForm = new RemoveFactorForm();
         removeFactorForm.setId(factorId);
         model.addAttribute("removeFactorForm-" + factorId, removeFactorForm);
     }
 
-    protected void addAddLevelFormModelAttribute(Model model, String factorId, String experimentId) {
+    protected void addAddLevelFormModelAttribute(Model model, String factorId) {
         AddLevelForm addLevelForm = new AddLevelForm();
         addLevelForm.setFactorId(factorId);
         model.addAttribute("addLevelForm-" + factorId, addLevelForm);
     }
 
-    protected void addEditLevelFormModelAttribute(Model model, String levelId, String factorId, String experimentId) {
+    protected void addEditLevelFormModelAttribute(Model model, String levelId, String factorId) {
         EditLevelForm editLevelForm = new EditLevelForm();
         editLevelForm.setFactorId(factorId);
         editLevelForm.setId(levelId);
         model.addAttribute("editLevelForm-" + levelId, editLevelForm);
     }
 
-    protected void addRemoveLevelFormModelAttribute(Model model, String levelId, String factorId, String experimentId) {
+    protected void addRemoveLevelFormModelAttribute(Model model, String levelId, String factorId) {
         RemoveLevelForm removeLevelForm = new RemoveLevelForm();
         removeLevelForm.setFactorId(factorId);
         removeLevelForm.setId(levelId);
