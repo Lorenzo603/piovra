@@ -33,16 +33,6 @@ var ExperimentGridWidget = {
             factorItemActions.addClass("hidden");
         });
 
-        $('.factor-item-levels li').mouseenter(function() {
-            var levelItemActions = $(this).find(".level-item-actions");
-            levelItemActions.fadeIn("fast");
-            levelItemActions.removeClass("hidden");
-        }).mouseleave(function() {
-            var levelItemActions = $(this).find(".level-item-actions");
-            levelItemActions.fadeOut("fast");
-            levelItemActions.addClass("hidden");
-        });
-
         $('.level-item-name').click(
             function() {
               $(this).addClass("hidden").siblings("form").children(".input-group").removeClass("hidden").children("input").val($(this).text());
@@ -52,6 +42,13 @@ var ExperimentGridWidget = {
         $('.level-item form .cancel-action').click(
             function() {
               $(this).parent().addClass("hidden").parent().siblings("span").removeClass("hidden");
+            }
+        );
+
+        $('.level-item-actions form a').click(
+            function(e) {
+                e.preventDefault();
+                $('#'+$(this).attr("id").replace("-submit", "")).submit();
             }
         );
 

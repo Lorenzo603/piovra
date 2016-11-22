@@ -100,16 +100,11 @@ button.remove-button:hover {
     background-color: #FFE094;
 }
 
-.factor-table {
-    padding: 0px;
-}
-
 #factor-list {
     margin-bottom: 0px;
 }
 
 #factor-list .list-group-item {
-    padding: 0px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -118,7 +113,6 @@ button.remove-button:hover {
 }
 
 #factor-list .list-group-item .list-group-item {
-    padding-left: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-bottom: 0px;
@@ -127,7 +121,6 @@ button.remove-button:hover {
 .factor-item-header {
     background-color: darkblue;
     color: white;
-    padding-left: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-bottom: 0px;
@@ -154,16 +147,12 @@ button.remove-button:hover {
     margin: 0px;
 }
 
-.factor-item > .factor-item-levels > form {
+.factor-item-levels > form {
     background-color: cornflowerblue;
     padding-left: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-bottom: 0px;
-}
-
-.factor-item > .factor-item-levels > ul {
-    padding: 0px;
 }
 
 .level-item {
@@ -172,12 +161,11 @@ button.remove-button:hover {
 }
 
 .level-item-actions > form {
-    float: left;
     margin: 0px;
 }
 
 .level-item-name {
-    font-size: medium;
+    font-size: small;
 }
 
 .factor-item-levels {
@@ -196,6 +184,10 @@ button.remove-button:hover {
 
 .accordion-toggle.collapsed:before {
     content: "\e080"; /* symbol for collapsed panels */
+}
+
+.remove-icon {
+    color: red;
 }
 
 

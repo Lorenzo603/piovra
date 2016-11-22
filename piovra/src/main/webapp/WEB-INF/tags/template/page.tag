@@ -61,6 +61,7 @@
                 </div>
             </div>
         </nav>
+
         <common:breadcrumbs />
 
         <div class="container-fluid">
@@ -68,8 +69,12 @@
         </div>
 
         <footer class="footer">
-            <div class="container">
-                <div class="by"><span>By Lorenzo603</span></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="by"><span>By Lorenzo603</span></div>
+                    </div>
+                </div>
             </div>
         </footer>
 
