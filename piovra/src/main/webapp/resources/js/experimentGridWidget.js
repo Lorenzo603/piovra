@@ -43,6 +43,17 @@ var ExperimentGridWidget = {
             levelItemActions.addClass("hidden");
         });
 
+        $('.level-item-name').click(
+            function() {
+              $(this).addClass("hidden").siblings("form").children(".input-group").removeClass("hidden");
+            }
+        );
+        $('.level-item form .input-group').click(
+            function() {
+              $(this).addClass("hidden").parent().siblings("span").removeClass("hidden");
+            }
+        );
+
         $('.edit-factor-button').click(
             function(e) {
                 e.preventDefault();
