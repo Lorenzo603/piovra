@@ -92,6 +92,11 @@ button.remove-button:hover {
     background-color: white;
 }
 
+.list-group-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .factor-row {
     padding: 10px 15px;
 }
@@ -110,12 +115,6 @@ button.remove-button:hover {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     border: 0px;
-}
-
-#factor-list .list-group-item .list-group-item {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-bottom: 0px;
 }
 
 .factor-item-header {
@@ -160,7 +159,12 @@ button.remove-button:hover {
     align-items: center;
 }
 
-.level-item > form {
+.level-item > div {
+    display: flex;
+    align-items: center;
+}
+
+.level-item form {
     margin: 0px;
 }
 
@@ -172,9 +176,8 @@ button.remove-button:hover {
 .factor-item-levels {
     color: black;
 }
-
-li:nth-child(odd) {
-    background-color: red;
+.factor-item-levels ul li:nth-child(even) {
+    background-color: #fbefff;
 }
 
 .accordion-toggle:before {
