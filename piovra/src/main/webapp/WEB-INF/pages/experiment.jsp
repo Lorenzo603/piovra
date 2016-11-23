@@ -132,7 +132,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-md-12">
+                                                            <div class="add-level-row col-md-12">
                                                                 <form:form id="addLevelForm-${factor.id}" method="POST" action="${experimentContextPath}/add-level" modelAttribute="addLevelForm-${factor.id}">
                                                                     <form:hidden path="factorId" />
                                                                     <form:input path="name" type="text" placeholder="Level name"/>
