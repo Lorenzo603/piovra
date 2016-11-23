@@ -37,22 +37,43 @@
                                             <li id="li-factor-${factorLoopStatus.index}" class="list-group-item">
                                                 <div class="row factor-item-header">
                                                     <div class="col-md-12">
+                                                        <div class="col-md-11">
                                                         <a class="accordion-toggle collapsed" href="#factor-levels-${factorLoopStatus.index}" data-toggle="collapse" aria-expanded="false" aria-controls="factor-levels-${factorLoopStatus.index}">
                                                         </a>
-                                                        <div class="factor-item-title">
+                                                        <div class="factor-item">
                                                             <span class="factor-item-name">${factor.name}</span>
-                                                            <div class="factor-item-actions hidden">
-                                                                <form:form id="editFactorForm-${factor.id}" method="POST" action="${experimentContextPath}/edit-factor" modelAttribute="editFactorForm-${factor.id}">
-                                                                    <form:hidden path="id" />
-                                                                    <button class="btn btn-xs edit-button" type="submit">
-                                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                                    </button>
-                                                                </form:form>
+                                                            <form:form id="editFactorForm-${factor.id}" method="POST" action="${experimentContextPath}/edit-factor" modelAttribute="editFactorForm-${factor.id}" class="form-group">
+                                                                <form:hidden path="id" />
+                                                                <div class="input-group input-group-sm hidden">
+                                                                    <form:input path="newName" type="text" value="${factor.name}" class="form-control"/>
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                                                                    </span>
+                                                                    <span class="input-group-btn cancel-action">
+                                                                        <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                                    </span>
+                                                                </div>
+                                                            </form:form>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="factor-item-actions">
                                                                 <form:form id="removeFactorForm-${factor.id}" method="POST" action="${experimentContextPath}/remove-factor" modelAttribute="removeFactorForm-${factor.id}">
                                                                     <form:hidden path="id" />
-                                                                    <button class="btn btn-xs remove-button" type="submit">
-                                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                                    </button>
+                                                                    <div class="btn-group">
+                                                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded=false>
+                                                                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                                            <span class="caret"></span>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li>
+                                                                                <a id="removeFactorForm-${factor.id}-submit" href="#">
+                                                                                    <span class="glyphicon glyphicon-remove remove-icon" aria-hidden="true"></span>
+                                                                                    Remove Factor
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </form:form>
                                                             </div>
                                                         </div>

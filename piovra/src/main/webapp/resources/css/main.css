@@ -135,7 +135,7 @@ button.remove-button:hover {
     font-size: large;
 }
 
-.factor-item-title {
+.factor-item {
     display: flex;
     align-items: center;
     padding-left: 5px;

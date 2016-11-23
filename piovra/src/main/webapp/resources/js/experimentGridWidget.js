@@ -23,15 +23,24 @@ var ExperimentGridWidget = {
         $('.factor-item-levels').on('shown.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
         $('.factor-item-levels').on('hidden.bs.collapse', ExperimentGridWidget.saveAllCollapsibleStates);
 
-        $('.factor-item-header').mouseenter(function() {
-            var factorItemActions = $(this).find(".factor-item-actions");
-            factorItemActions.fadeIn("fast");
-            factorItemActions.removeClass("hidden");
-        }).mouseleave(function() {
-            var factorItemActions = $(this).find(".factor-item-actions");
-            factorItemActions.fadeOut("fast");
-            factorItemActions.addClass("hidden");
-        });
+        $('.factor-item-name').click(
+            function() {
+              $(this).addClass("hidden").siblings("form").children(".input-group").removeClass("hidden").children("input").val($(this).text());
+            }
+        );
+
+        $('.factor-item > form .cancel-action').click(
+            function() {
+              $(this).parent().addClass("hidden").parent().siblings("span").removeClass("hidden");
+            }
+        );
+
+        $('.factor-item-actions form a').click(
+            function(e) {
+                e.preventDefault();
+                $('#'+$(this).attr("id").replace("-submit", "")).submit();
+            }
+        );
 
         $('.level-item-name').click(
             function() {
@@ -51,6 +60,12 @@ var ExperimentGridWidget = {
                 $('#'+$(this).attr("id").replace("-submit", "")).submit();
             }
         );
+
+
+
+
+
+
 
         $('.edit-factor-button').click(
             function(e) {
