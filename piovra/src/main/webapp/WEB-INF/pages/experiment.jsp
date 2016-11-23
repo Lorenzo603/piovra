@@ -19,9 +19,9 @@
     <c:url value="/my-account/experiment/${experiment.name}" var="experimentContextPath"/>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <button id="expand-all-button" class="btn btn-xs btn-primary">Expand all</button>
                     <button id="collapse-all-button" class="btn btn-xs btn-warning">Collapse all</button>
                 </div>
@@ -68,7 +68,7 @@
                                                                             <div class="col-md-12">
                                                                                 <li id="li-level-${levelLoopStatus.index}" class="list-group-item">
                                                                                     <div class="row level-item">
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-11">
                                                                                             <span class="level-item-name">${level.name}</span>
                                                                                             <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}" class="form-group">
                                                                                                 <form:hidden path="factorId" />
@@ -84,7 +84,7 @@
                                                                                                 </div>
                                                                                             </form:form>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-1">
                                                                                             <div class="level-item-actions">
                                                                                                 <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
                                                                                                     <form:hidden path="factorId" />

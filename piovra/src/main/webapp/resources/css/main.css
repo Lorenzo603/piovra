@@ -126,7 +126,7 @@ button.remove-button:hover {
     margin-bottom: 0px;
 }
 
-.factor-item-header > a {
+.factor-item-header a {
     color: inherit;
     text-decoration: none;
 }
@@ -160,19 +160,21 @@ button.remove-button:hover {
     align-items: center;
 }
 
-.level-item-actions > form {
+.level-item > form {
     margin: 0px;
 }
 
 .level-item-name {
     font-size: small;
+    cursor: pointer;
 }
 
 .factor-item-levels {
     color: black;
 }
-.factor-item-levels > ul > li:nth-child(even) {
-    background-color: azure;
+
+li:nth-child(odd) {
+    background-color: red;
 }
 
 .accordion-toggle:before {
