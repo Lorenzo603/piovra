@@ -6,20 +6,14 @@ import it.lf.piovra.models.Level;
 import it.lf.piovra.scala.core.SuiteCalculator;
 import it.lf.piovra.services.SuiteService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-/**
- * Created by Lorenzo on 17/05/2016.
- */
 public class SuiteServiceImpl implements SuiteService {
 
     @Override
     public List<List<String>> calculate(Experiment experiment) {
         // TODO
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> map = new LinkedHashMap<>();
         for (Factor factor : experiment.getFactors()) {
             List<String> levelNames = new ArrayList<>();
             for (Level level : factor.getLevels()) {
