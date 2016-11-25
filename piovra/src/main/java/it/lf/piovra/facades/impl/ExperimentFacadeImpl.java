@@ -1,6 +1,8 @@
 package it.lf.piovra.facades.impl;
 
 import it.lf.piovra.facades.ExperimentFacade;
+import it.lf.piovra.facades.data.CreateExperimentResult;
+import it.lf.piovra.facades.data.CreateExperimentStatus;
 import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.User;
 import it.lf.piovra.services.ExperimentConverter;
@@ -23,12 +25,15 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
     private UserService userService;
 
     @Override
-    public ExperimentData createExperiment(String name) {
+    public CreateExperimentResult createExperiment(String name) {
         User user = userService.getCurrentUser();
         if (userService.isAnonymousUser(user)) {
             return null;
         }
-        return experimentConverter.convert(experimentService.createExperiment(user, name));
+        if (experimentService.getExperimentById(name) != null) {
+            return new CreateExperimentResult(CreateExperimentStatus.EXPERIMENT_ALREADY_EXISTS, "createExperiment.experiment.already.exists");
+        }
+        return new CreateExperimentResult(experimentConverter.convert(experimentService.createExperiment(user, name)));
     }
 
     @Override

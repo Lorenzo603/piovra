@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class CreateExperimentForm {
 
-    @NotBlank
+    @NotBlank(message = "{NotBlank.createExperimentForm.name}")
     private String name;
 
     public String getName() {
