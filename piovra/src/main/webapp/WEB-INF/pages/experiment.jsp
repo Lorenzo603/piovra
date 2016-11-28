@@ -22,8 +22,14 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-4">
-                    <button id="expand-all-button" class="btn btn-xs btn-primary">Expand all</button>
-                    <button id="collapse-all-button" class="btn btn-xs btn-warning">Collapse all</button>
+                    <button id="expand-all-button" class="btn btn-xs btn-default">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Expand all
+                    </button>
+                    <button id="collapse-all-button" class="btn btn-xs btn-default">
+                        <span class="glyphicon glyphicon-minus"></span>
+                        Collapse all
+                    </button>
                 </div>
             </div>
             <div class="row">
@@ -80,57 +86,53 @@
                                                     </div>
                                                 </div>
                                                 <div class="row factor-item-levels collapse" id="factor-levels-${factorLoopStatus.index}">
-                                                    <div class="col-md-12">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <ul class="list-group">
-                                                                    <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
-                                                                        <li id="li-level-${levelLoopStatus.index}" class="list-group-item">
-                                                                            <div class="level-item">
-                                                                                <div class="col-md-11">
-                                                                                    <span class="level-item-name">${level.name}</span>
-                                                                                    <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}" class="form-group">
-                                                                                        <form:hidden path="factorId" />
-                                                                                        <form:hidden path="id" />
-                                                                                        <div class="input-group input-group-sm hidden">
-                                                                                            <form:input path="newName" type="text" value="${level.name}" class="form-control"/>
-                                                                                            <span class="input-group-btn">
-                                                                                                <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                                                                                            </span>
-                                                                                            <span class="input-group-btn cancel-action">
-                                                                                                <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </form:form>
+                                                    <div class="factor-item-levels-items col-md-12">
+                                                        <ul class="list-group">
+                                                            <c:forEach var="level" items="${factor.levels}" varStatus="levelLoopStatus">
+                                                                <li id="li-level-${levelLoopStatus.index}" class="list-group-item">
+                                                                    <div class="level-item">
+                                                                        <div class="col-md-11">
+                                                                            <span class="level-item-name">${level.name}</span>
+                                                                            <form:form id="editLevelForm-${level.id}" method="POST" action="${experimentContextPath}/edit-level" modelAttribute="editLevelForm-${level.id}" class="form-group">
+                                                                                <form:hidden path="factorId" />
+                                                                                <form:hidden path="id" />
+                                                                                <div class="input-group input-group-sm hidden">
+                                                                                    <form:input path="newName" type="text" value="${level.name}" class="form-control"/>
+                                                                                    <span class="input-group-btn">
+                                                                                        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                                                                                    </span>
+                                                                                    <span class="input-group-btn cancel-action">
+                                                                                        <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                                                    </span>
                                                                                 </div>
-                                                                                <div class="col-md-1">
-                                                                                    <div class="level-item-actions">
-                                                                                        <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
-                                                                                            <form:hidden path="factorId" />
-                                                                                            <form:hidden path="id" />
-                                                                                            <div class="btn-group">
-                                                                                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded=false>
-                                                                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                                                                                                    <span class="caret"></span>
-                                                                                                </button>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                    <li>
-                                                                                                        <a id="removeLevelForm-${level.id}-submit" href="#">
-                                                                                                            <span class="glyphicon glyphicon-remove remove-icon" aria-hidden="true"></span>
-                                                                                                            Remove Level
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </form:form>
+                                                                            </form:form>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <div class="level-item-actions">
+                                                                                <form:form id="removeLevelForm-${level.id}" method="POST" action="${experimentContextPath}/remove-level" modelAttribute="removeLevelForm-${level.id}">
+                                                                                    <form:hidden path="factorId" />
+                                                                                    <form:hidden path="id" />
+                                                                                    <div class="btn-group">
+                                                                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded=false>
+                                                                                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                                                            <span class="caret"></span>
+                                                                                        </button>
+                                                                                        <ul class="dropdown-menu">
+                                                                                            <li>
+                                                                                                <a id="removeLevelForm-${level.id}-submit" href="#">
+                                                                                                    <span class="glyphicon glyphicon-remove remove-icon" aria-hidden="true"></span>
+                                                                                                    Remove Level
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        </ul>
                                                                                     </div>
-                                                                                </div>
+                                                                                </form:form>
                                                                             </div>
-                                                                        </li>
-                                                                    </c:forEach>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </c:forEach>
+                                                        </ul>
                                                         <div class="row">
                                                             <div class="add-level-row col-md-12">
                                                                 <form:form id="addLevelForm-${factor.id}" method="POST" action="${experimentContextPath}/add-level" modelAttribute="addLevelForm-${factor.id}">
@@ -172,9 +174,9 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <form:form id="calculateForm" method="POST" action="${experimentContextPath}/calculate" modelAttribute="calculateForm">
-                        <button class="btn btn-lg btn-default" type="submit">Calculate</button>
+                        <button class="btn btn-lg btn-default btn-block purple" type="submit">Calculate</button>
                     </form:form>
                 </div>
             </div>

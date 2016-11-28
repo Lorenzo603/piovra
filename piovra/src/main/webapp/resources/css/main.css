@@ -121,7 +121,8 @@ button.remove-button:hover {
 }
 
 .add-factor-row {
-    background-color: #FFE094;
+    background-color: #fbefff;
+    border: 1px solid #cccccc;
 }
 
 #factor-list {
@@ -199,9 +200,16 @@ button.remove-button:hover {
 .factor-item-levels {
     color: black;
 }
+
+.factor-item-levels-items {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .factor-item-levels ul li:nth-child(even) {
     background-color: #fbefff;
 }
+
 
 .accordion-toggle:before {
     /* symbol for opening panels */
