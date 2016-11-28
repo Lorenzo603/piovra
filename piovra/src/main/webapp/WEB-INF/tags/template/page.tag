@@ -12,12 +12,15 @@
         <title>Piovra</title>
 
         <link rel="stylesheet" href="${siteResourceUrl}/css/lib/bootstrap.min.css" />
+        <link rel="stylesheet" href="${siteResourceUrl}/css/lib/datatables.min.css" />
         <link rel="stylesheet" href="${siteResourceUrl}/css/main.css" />
         <script type="text/javascript" src="${siteResourceUrl}/js/lib/jquery-1.12.3.min.js"></script>
         <script type="text/javascript" src="${siteResourceUrl}/js/lib/bootstrap.min.js"></script>
         <script type="text/javascript" src="${siteResourceUrl}/js/lib/mustache.min.js"></script>
         <script type="text/javascript" src="${siteResourceUrl}/js/lib/js.cookie.js"></script>
+        <script type="text/javascript" src="${siteResourceUrl}/js/lib/datatables.min.js"></script>
         <script type="text/javascript" src="${siteResourceUrl}/js/experimentGridWidget.js"></script>
+        <script type="text/javascript" src="${siteResourceUrl}/js/experimentResultWidget.js"></script>
     </head>
 
     <body>

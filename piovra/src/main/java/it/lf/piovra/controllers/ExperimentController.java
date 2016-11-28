@@ -160,6 +160,12 @@ public class ExperimentController extends AbstractController {
         return ControllerConstants.Views.CALCULATE_RESULT_VIEW;
     }
 
+    @RequestMapping(value = "/calculateAjax", method = RequestMethod.GET)
+    @ResponseBody
+    public String calculate(@PathVariable("experimentId") String experimentId) {
+        return  gsonUtils.toJson(suiteFacade.calculate(experimentId));
+    }
+
     @RequestMapping(value = "/export-to-excel", method = RequestMethod.GET)
     public void exportToExcel(@PathVariable("experimentId") String experimentId, HttpServletResponse response) {
         HSSFWorkbook excelFile = suiteFacade.generateExcelFile(experimentId);

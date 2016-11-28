@@ -21,6 +21,19 @@
                 </button>
             </a>
         </div>
+
+        <table id="casesTable" class="display" width="100%">
+            <thead>
+                <tr role="row">
+                    <c:forEach var="factorName" items="${suite.factorNames}">
+                        <th role="columnheader">${factorName}</th>
+                    </c:forEach>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
         <table class="table table-striped table-bordered">
             <tr>
                 <th></th>
@@ -45,19 +58,11 @@
 
     <script type="text/javascript">
 
-        $(document).ready(
-            function() {
-                $('input[type="checkbox"]').change(
-                function() {
-                        var caseIndex = $(this).attr('id').split("-")[2];
-                        if (this.checked) {
-                            $('#tr-case-'+caseIndex).addClass('case-considered');
-                        } else {
-                            $('#tr-case-'+caseIndex).removeClass('case-considered');
-                        }
-                    }
-                );
-        });
+       $(document).ready(
+           function() {
+               ExperimentResultWidget.init();
+           }
+       );
 
     </script>
 </template:page>
