@@ -22,7 +22,7 @@
             </a>
         </div>
 
-        <table id="casesTable" class="display" width="100%">
+        <table id="casesTable" class="table table-striped table-bordered" width="100%">
             <thead>
                 <tr role="row">
                     <c:forEach var="factorName" items="${suite.factorNames}">
@@ -34,26 +34,6 @@
             </tbody>
         </table>
 
-        <table class="table table-striped table-bordered">
-            <tr>
-                <th></th>
-                <th></th>
-                <c:forEach var="factorName" items="${suite.factorNames}">
-                    <th>${factorName}</th>
-                </c:forEach>
-            </tr>
-            <c:forEach var="caseList" items="${suite.cases}" varStatus="status">
-                <tr id="tr-case-${status.index}">
-                    <th class="fit">
-                        <input id="checkbox-case-${status.index}" type="checkbox">
-                    </th>
-                    <th class="fit">Case ${status.count}</th>
-                    <c:forEach var="levelName" items="${caseList}">
-                        <td>${levelName}</td>
-                    </c:forEach>
-                </tr>
-            </c:forEach>
-        </table>
     </div>
 
     <script type="text/javascript">
