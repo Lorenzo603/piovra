@@ -238,8 +238,8 @@ button.remove-button:hover {
     width: 1%;
 }
 
-.case-considered {
-    background-color: darkseagreen !important;
+.table > tbody > tr.active > td {
+    background-color: darkseagreen;
 }
 
 .export-actions {
