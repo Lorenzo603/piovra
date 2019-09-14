@@ -31,7 +31,7 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
         if (userService.isAnonymousUser(user)) {
             return null;
         }
-        if (experimentService.getExperimentById(name) != null) {
+        if (experimentService.getExperimentById(name).isPresent()) {
             return new CreateExperimentResult(CreateExperimentStatus.EXPERIMENT_ALREADY_EXISTS, "createExperiment.experiment.already.exists");
         }
         return new CreateExperimentResult(experimentConverter.convert(experimentService.createExperiment(user, name)));
