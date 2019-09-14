@@ -5,11 +5,13 @@ import it.lf.piovra.models.Factor;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.FactorService;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class FactorServiceImpl implements FactorService {
 
     @Resource
@@ -17,7 +19,7 @@ public class FactorServiceImpl implements FactorService {
 
     @Override
     public Factor createFactor(String experimentId, String name) {
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).orElse(null);
         if (experiment == null) {
             return null;
         }
@@ -31,7 +33,7 @@ public class FactorServiceImpl implements FactorService {
 
     @Override
     public Factor updateFactor(String experimentId, String id, String name) {
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).orElse(null);
         if (experiment == null) {
             return null;
         }
@@ -56,7 +58,7 @@ public class FactorServiceImpl implements FactorService {
 
     @Override
     public void removeFactor(String experimentId, String id) {
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).orElse(null);
         if (experiment == null) {
             return;
         }

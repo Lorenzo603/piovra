@@ -9,12 +9,13 @@ import it.lf.piovra.services.ExperimentConverter;
 import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.UserService;
 import it.lf.piovra.views.ExperimentData;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class ExperimentFacadeImpl implements ExperimentFacade {
 
     @Resource
@@ -52,7 +53,7 @@ public class ExperimentFacadeImpl implements ExperimentFacade {
 
     @Override
     public ExperimentData getExperimentById(String id) {
-        return experimentConverter.convert(experimentService.getExperimentById(id));
+        return experimentConverter.convert(experimentService.getExperimentById(id).get());
     }
 
 }

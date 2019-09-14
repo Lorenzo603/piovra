@@ -6,12 +6,13 @@ import it.lf.piovra.services.ExperimentConverter;
 import it.lf.piovra.services.FactorConverter;
 import it.lf.piovra.views.ExperimentData;
 import it.lf.piovra.views.FactorData;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class ExperimentConverterImpl implements ExperimentConverter {
 
     @Resource

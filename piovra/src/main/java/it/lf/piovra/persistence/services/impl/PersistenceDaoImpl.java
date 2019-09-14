@@ -6,10 +6,12 @@ import it.lf.piovra.persistence.repository.ExperimentRepository;
 import it.lf.piovra.persistence.repository.UserRepository;
 import it.lf.piovra.persistence.services.PersistenceDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class PersistenceDaoImpl implements PersistenceDao {
 
     @Autowired
@@ -18,8 +20,8 @@ public class PersistenceDaoImpl implements PersistenceDao {
     private UserRepository userRepository;
 
     @Override
-    public Experiment getExperimentById(String experimentId) {
-        return experimentRepository.findOne(experimentId);
+    public Optional<Experiment> getExperimentById(String experimentId) {
+        return experimentRepository.findById(experimentId);
     }
 
     @Override
@@ -28,8 +30,8 @@ public class PersistenceDaoImpl implements PersistenceDao {
     }
 
     @Override
-    public User getUserByEmail(String email) {
-        return userRepository.findOne(email);
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findById(email);
     }
 
     @Override

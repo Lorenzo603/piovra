@@ -6,9 +6,12 @@ import it.lf.piovra.facades.data.RegistrationResult;
 import it.lf.piovra.facades.data.RegistrationResultStatus;
 import it.lf.piovra.models.User;
 import it.lf.piovra.services.UserService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
+@Service
 public class UserFacadeImpl implements UserFacade {
 
     @Resource
@@ -16,8 +19,8 @@ public class UserFacadeImpl implements UserFacade {
 
     @Override
     public RegistrationResult registerUser(String email, String password) {
-        User existingUser = userService.getUserByEmail(email);
-        if (existingUser != null) {
+        Optional<User> existingUser = userService.getUserByEmail(email);
+        if (existingUser.isPresent()) {
             return new RegistrationResult(RegistrationResultStatus.USER_ALREADY_REGISTERED, "register.user.already.exists");
         }
         User user = userService.createUser(email, password);

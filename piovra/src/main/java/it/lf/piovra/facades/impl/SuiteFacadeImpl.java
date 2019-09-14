@@ -9,12 +9,13 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class SuiteFacadeImpl implements SuiteFacade {
 
     @Resource
@@ -27,7 +28,7 @@ public class SuiteFacadeImpl implements SuiteFacade {
     public SuiteData calculate(String experimentId) {
         SuiteData suiteData = new SuiteData();
         suiteData.setExperimentId(experimentId);
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).get();
         suiteData.setFactorNames(experiment.getFactors().stream().map(factor -> factor.getName()).collect(Collectors.toList()));
         List<List<String>> results = suiteService.calculate(experiment);
         suiteData.setCases(results);

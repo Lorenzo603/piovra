@@ -8,9 +8,12 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private static final String ANONYMOUS_USER_EMAIL = "anonymous";
@@ -30,7 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public Optional<User> getUserByEmail(String email) {
         return persistenceDao.getUserByEmail(email);
     }
 

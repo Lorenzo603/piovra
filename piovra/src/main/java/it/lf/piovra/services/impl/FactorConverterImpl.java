@@ -6,11 +6,13 @@ import it.lf.piovra.services.FactorConverter;
 import it.lf.piovra.services.LevelConverter;
 import it.lf.piovra.views.FactorData;
 import it.lf.piovra.views.LevelData;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class FactorConverterImpl implements FactorConverter {
 
     @Resource

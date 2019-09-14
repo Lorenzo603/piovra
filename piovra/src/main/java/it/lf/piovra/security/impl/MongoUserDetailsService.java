@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Arrays;
+import java.util.Optional;
+
 
 public class MongoUserDetailsService implements UserDetailsService {
 
@@ -17,11 +19,11 @@ public class MongoUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findOne(username);
-        if (user == null) {
+        Optional<User> user = userRepository.findById(username);
+        if (!user.isPresent()) {
             throw new UsernameNotFoundException("User not found");
         }
-        return new MongoUserDetails(user, Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        return new MongoUserDetails(user.get(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
     }
 
 

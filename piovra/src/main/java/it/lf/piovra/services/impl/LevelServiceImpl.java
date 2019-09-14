@@ -7,11 +7,13 @@ import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.FactorService;
 import it.lf.piovra.services.LevelService;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class LevelServiceImpl implements LevelService {
 
     @Resource
@@ -34,7 +36,7 @@ public class LevelServiceImpl implements LevelService {
 
     @Override
     public Level createLevel(String experimentId, String factorId, String name) {
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).orElse(null);
         if (experiment == null) {
             return null;
         }
@@ -52,7 +54,7 @@ public class LevelServiceImpl implements LevelService {
 
     @Override
     public Level updateLevel(String experimentId, String factorId, String id, String name) {
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).orElse(null);
         if (experiment == null) {
             return null;
         }
@@ -71,7 +73,7 @@ public class LevelServiceImpl implements LevelService {
 
     @Override
     public void removeLevel(String experimentId, String factorId, String id) {
-        Experiment experiment = experimentService.getExperimentById(experimentId);
+        Experiment experiment = experimentService.getExperimentById(experimentId).orElse(null);
         if (experiment == null) {
             return;
         }

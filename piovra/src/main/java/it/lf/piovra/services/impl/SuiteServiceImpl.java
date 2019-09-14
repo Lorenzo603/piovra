@@ -5,9 +5,11 @@ import it.lf.piovra.models.Factor;
 import it.lf.piovra.models.Level;
 import it.lf.piovra.scala.core.SuiteCalculator;
 import it.lf.piovra.services.SuiteService;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class SuiteServiceImpl implements SuiteService {
 
     @Override

@@ -4,12 +4,14 @@ import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.User;
 
 import java.util.List;
+import java.util.Optional;
+
 
 public interface ExperimentService {
 
     Experiment createExperiment(User user, String name);
 
-    Experiment getExperimentById(String id);
+    Optional<Experiment> getExperimentById(String id);
 
     List<Experiment> getExperimentsByUser(User user);
 

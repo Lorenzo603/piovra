@@ -5,9 +5,11 @@ import it.lf.piovra.models.Level;
 import it.lf.piovra.services.LevelConverter;
 import it.lf.piovra.services.LevelService;
 import it.lf.piovra.views.LevelData;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+@Service
 public class LevelFacadeImpl implements LevelFacade {
 
     @Resource

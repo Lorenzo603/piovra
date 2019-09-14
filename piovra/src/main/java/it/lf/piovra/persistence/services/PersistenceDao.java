@@ -4,14 +4,16 @@ import it.lf.piovra.models.Experiment;
 import it.lf.piovra.models.User;
 
 import java.util.List;
+import java.util.Optional;
+
 
 public interface PersistenceDao {
 
-    Experiment getExperimentById(String experimentId);
+    Optional<Experiment> getExperimentById(String experimentId);
 
     List<Experiment> getExperimentsByUser(User user);
 
-    User getUserByEmail(String email);
+    Optional<User> getUserByEmail(String email);
 
     void persistExperiment(Experiment experiment);
 

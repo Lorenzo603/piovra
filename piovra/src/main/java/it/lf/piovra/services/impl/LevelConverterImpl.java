@@ -3,7 +3,10 @@ package it.lf.piovra.services.impl;
 import it.lf.piovra.models.Level;
 import it.lf.piovra.services.LevelConverter;
 import it.lf.piovra.views.LevelData;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class LevelConverterImpl implements LevelConverter {
 
     @Override

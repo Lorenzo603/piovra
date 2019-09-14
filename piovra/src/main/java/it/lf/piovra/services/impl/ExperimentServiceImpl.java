@@ -7,10 +7,13 @@ import it.lf.piovra.services.ExperimentService;
 import it.lf.piovra.services.UserService;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class ExperimentServiceImpl implements ExperimentService {
 
     @Resource
@@ -34,7 +37,7 @@ public class ExperimentServiceImpl implements ExperimentService {
     }
 
     @Override
-    public Experiment getExperimentById(String id) {
+    public Optional<Experiment> getExperimentById(String id) {
         User user = userService.getCurrentUser();
         return persistenceDao.getExperimentById(calculateExperimentId(user, id));
     }
