@@ -1,6 +1,7 @@
 package it.lf.piovra.views.forms;
 
-import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotBlank;
 
 
 public class LoginForm {
