@@ -15,6 +15,12 @@
                         <div class="col-md-4 col-md-offset-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
+                                    <c:if test="${success}">
+                                        <c:url var="loginUrl" value="/login"/>
+                                        <div class="alert alert-success" role="alert">
+                                            Thanks for signing up! You can now <a href="${loginUrl}">login</a>.
+                                        </div>
+                                    </c:if>
                                     <c:url var="registerUrl" value="/register/doRegister"/>
                                     <form:form id="registerForm" method="POST" action="${registerUrl}" modelAttribute="registerForm">
                                         <form:errors class="form-error" />

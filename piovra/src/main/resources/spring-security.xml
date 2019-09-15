@@ -17,7 +17,7 @@
         />
         <security:logout
                 logout-url="/logout"
-                logout-success-url="/login?logout=true"
+                logout-success-url="/login"
         />
     </security:http>
 

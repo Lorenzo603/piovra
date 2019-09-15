@@ -38,7 +38,7 @@ public class RegisterPageController extends AbstractController {
     }
 
     @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
-    public String doRegister(@Valid RegisterForm registerForm, BindingResult bindingResult) {
+    public String doRegister(@Valid RegisterForm registerForm, BindingResult bindingResult, Model model) {
         registerFormValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
             return ControllerConstants.Views.REGISTER_VIEW;
@@ -47,6 +47,8 @@ public class RegisterPageController extends AbstractController {
         if (!RegistrationResultStatus.OK.equals(registrationResult.getStatus())) {
             bindingResult.reject(registrationResult.getMessageCode());
         }
+
+        model.addAttribute("success", true);
         return ControllerConstants.Views.REGISTER_VIEW;
     }
 
