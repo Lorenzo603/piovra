@@ -20,6 +20,12 @@ a {
     font-size: xx-large;
 }
 
+.login-register-class {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: auto;
+}
+
 .footer {
     bottom: 0;
     width: 100%;
@@ -44,10 +50,6 @@ a {
 #createExperimentForm {
     margin-top: 20px;
     margin-left: 15px;
-}
-
-#loginForm {
-    display: inline-block;
 }
 
 .form-error {

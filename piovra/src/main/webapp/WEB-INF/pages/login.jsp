@@ -16,14 +16,19 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <c:url var="doLoginUrl" value="/my-account/doLogin"/>
-                                    <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm" class="navbar-form">
+                                    <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm">
+                                        <form:errors class="form-error" />
                                         <div class="form-group">
-                                            <form:input path="username" />
+                                            <label for="username">Username</label>
+                                            <form:input path="username" placeholder="Username" class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            <form:password path="password" />
+                                            <label for="password">Password</label>
+                                            <form:password path="password" placeholder="Password" class="form-control"/>
                                         </div>
-                                        <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
+                                        <div class="form-group text-center">
+                                            <button class="btn btn-lg btn-default purple" type="submit">Login</button>
+                                        </div>
                                     </form:form>
                                 </div>
                             </div>

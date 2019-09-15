@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="navbar-right">
+                        <div class="navbar-right login-register-class">
                             <sec:authorize access="hasRole('ROLE_USER')" var="isLogged"/>
                             <c:choose>
                                 <c:when test="${isLogged}">
