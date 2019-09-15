@@ -11,6 +11,7 @@ public interface ControllerConstants {
     interface Views {
         String HOMEPAGE_VIEW = "index";
         String REGISTER_VIEW = "register";
+        String LOGIN_VIEW = "login";
 
         String EXPERIMENTS_VIEW = "experiments";
         String EXPERIMENT_VIEW = "experiment";

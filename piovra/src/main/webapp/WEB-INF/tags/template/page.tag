@@ -45,18 +45,10 @@
                                     </form:form>
                                 </c:when>
                                 <c:otherwise>
-                                        <a class="btn btn-lg btn-default purple" href="login">Register</a>
-                                        <c:url var="doLoginUrl" value="/my-account/doLogin"/>
-                                        <form:form id="loginForm" method="POST" action="${doLoginUrl}" modelAttribute="loginForm" class="navbar-form">
-                                            <div class="form-group">
-                                                <form:input path="username" />
-                                            </div>
-                                            <div class="form-group">
-                                                <form:password path="password" />
-                                            </div>
-                                            <button class="btn btn-lg btn-default purple-empty" type="submit">Login</button>
-                                        </form:form>
-
+                                    <c:url var="loginUrl" value="/login"/>
+                                    <a class="btn btn-lg btn-default" href="${loginUrl}">Login</a>
+                                    <c:url var="registerUrl" value="/register"/>
+                                    <a class="btn btn-lg btn-default purple" href="${registerUrl}">Register</a>
                                 </c:otherwise>
                             </c:choose>
                         </div>
