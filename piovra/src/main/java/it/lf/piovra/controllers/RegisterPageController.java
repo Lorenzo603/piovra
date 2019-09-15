@@ -7,7 +7,6 @@ import it.lf.piovra.facades.data.RegistrationResultStatus;
 import it.lf.piovra.views.forms.RegisterForm;
 import it.lf.piovra.views.forms.validators.RegisterFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,8 +18,8 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value= "/login")
-public class LoginPageController extends AbstractController {
+@RequestMapping(value= "/register")
+public class RegisterPageController extends AbstractController {
 
     @Resource
     private UserFacade userFacade;
@@ -34,21 +33,21 @@ public class LoginPageController extends AbstractController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showLogin(Model model) {
-        return ControllerConstants.Views.LOGIN_VIEW;
+    public String showRegistrationPage(Model model) {
+        return ControllerConstants.Views.REGISTER_VIEW;
     }
 
     @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
     public String doRegister(@Valid RegisterForm registerForm, BindingResult bindingResult) {
         registerFormValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            return ControllerConstants.Views.LOGIN_VIEW;
+            return ControllerConstants.Views.REGISTER_VIEW;
         }
         RegistrationResult registrationResult = userFacade.registerUser(registerForm.getEmail(), registerForm.getPassword());
         if (!RegistrationResultStatus.OK.equals(registrationResult.getStatus())) {
             bindingResult.reject(registrationResult.getMessageCode());
         }
-        return ControllerConstants.Views.LOGIN_VIEW;
+        return ControllerConstants.Views.REGISTER_VIEW;
     }
 
 }

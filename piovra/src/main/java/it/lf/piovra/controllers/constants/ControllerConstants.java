@@ -10,7 +10,7 @@ public interface ControllerConstants {
 
     interface Views {
         String HOMEPAGE_VIEW = "index";
-        String LOGIN_VIEW = "login";
+        String REGISTER_VIEW = "register";
 
         String EXPERIMENTS_VIEW = "experiments";
         String EXPERIMENT_VIEW = "experiment";

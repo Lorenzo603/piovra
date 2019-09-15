@@ -15,7 +15,7 @@
                         <div class="col-md-4 col-md-offset-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <c:url var="registerUrl" value="/login/doRegister"/>
+                                    <c:url var="registerUrl" value="/register/doRegister"/>
                                     <form:form id="registerForm" method="POST" action="${registerUrl}" modelAttribute="registerForm">
                                         <form:errors class="form-error" />
                                         <div class="form-group">
