@@ -5,6 +5,7 @@
                             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
     <security:http>
+        <security:intercept-url pattern="/**" requires-channel="https"/>
         <security:intercept-url pattern="/my-account*" requires-channel="https" access="hasRole('ROLE_USER')"/>
         <security:intercept-url pattern="/my-account/**" requires-channel="https" access="hasRole('ROLE_USER')"/>
         <security:form-login
