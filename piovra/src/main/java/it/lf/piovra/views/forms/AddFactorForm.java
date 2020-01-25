@@ -7,6 +7,8 @@ public class AddFactorForm {
 
     @NotBlank
     private String name;
+    @NotBlank
+    private String experimentId;
 
     public String getName() {
         return name;
@@ -17,4 +19,13 @@ public class AddFactorForm {
     }
 
 
+    public String getExperimentId()
+    {
+        return experimentId;
+    }
+
+    public void setExperimentId(final String experimentId)
+    {
+        this.experimentId = experimentId;
+    }
 }

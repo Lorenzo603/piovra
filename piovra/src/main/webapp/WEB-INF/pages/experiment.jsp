@@ -160,6 +160,7 @@
                         <div class="col-md-12">
                             <form:form id="addFactorForm" method="POST" action="${experimentContextPath}/add-factor" modelAttribute="addFactorForm">
                                 <div class="factor-row add-factor-row">
+                                    <form:hidden path="experimentId" value="${experiment.id}"/>
                                     <form:input path="name" type="text" placeholder="Factor name"/>
                                     <form:errors path="name" />
                                     <button class="btn btn-default add-button" type="submit">

@@ -88,6 +88,7 @@ var ExperimentGridWidget = {
             }
         );
 
+        $('.add-factor-row .add-button').click(ExperimentGridWidget.addFactor);
 
     },
 

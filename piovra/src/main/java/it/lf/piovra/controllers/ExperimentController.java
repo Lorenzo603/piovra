@@ -117,11 +117,7 @@ public class ExperimentController extends AbstractController {
         return gsonUtils.toJson(experimentData);
     }
 
-    @RequestMapping(value = "/add-factor", method = RequestMethod.POST, produces = "application/json")
-    public String addFactor(@PathVariable("experimentId") String experimentId, @Valid AddFactorForm addFactorForm) {
-        factorFacade.addFactor(experimentId, addFactorForm.getName());
-        return REDIRECT_PREFIX + ControllerConstants.Controllers.EXPERIMENT + "/" + experimentId;
-    }
+
 
     @RequestMapping(value = "/edit-factor", method = RequestMethod.POST, produces = "application/json")
     public String editFactor(@PathVariable("experimentId") String experimentId, @Valid EditFactorForm editFactorForm) {

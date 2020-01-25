@@ -25,6 +25,7 @@ public class ExperimentConverterImpl implements ExperimentConverter {
 
     @Override
     public ExperimentData convert(Experiment source, ExperimentData target) {
+        target.setId(source.getId());
         target.setName(source.getName());
         List<FactorData> factors = new ArrayList<>();
         for (Factor factor : source.getFactors()) {
